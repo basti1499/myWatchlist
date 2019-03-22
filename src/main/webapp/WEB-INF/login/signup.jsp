@@ -61,6 +61,31 @@
                     <div class="side-by-side">
                         <input type="password" name="signup_password2" value="${signup_form.values["signup_password2"][0]}">
                     </div>
+                    
+                    <label for="signup_vorname">
+                        Vorname:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="side-by-side">
+                        <input type="text" name="signup_vorname" value="${signup_form.values["signup_vorname"][0]}">
+                    </div>
+                    
+                    <label for="signup_nachname">
+                        Nachname:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="side-by-side">
+                        <input type="text" name="signup_nachname" value="${signup_form.values["signup_nachname"][0]}">
+                    </div>
+                    
+                    <label for="signup_alter">
+                        Alter:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="side-by-side">
+                        <input type="text" name="signup_alter" value="${signup_form.values["signup_alter"][0]}">
+                    </div>
+                    
 
                     <%-- Button zum Abschicken --%>
                     <div class="side-by-side">

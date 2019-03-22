@@ -27,6 +27,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -45,6 +47,22 @@ public class User implements Serializable {
     @Size(min = 5, max = 64, message = "Der Benutzername muss zwischen fünf und 64 Zeichen lang sein.")
     @NotNull(message = "Der Benutzername darf nicht leer sein.")
     private String username;
+    
+    @Column(name = "VORNAME", length = 64)
+    @Size(min = 2, max = 64, message = "Der Vorname muss zwischen zwei und 64 Zeichen lang sein.")
+    @NotNull(message = "Der Vorname darf nicht leer sein.")
+    private String vorname;
+    
+    @Column(name = "NACHNAME", length = 64)
+    @Size(min = 2, max = 64, message = "Der Nachname muss zwischen zwei und 64 Zeichen lang sein.")
+    @NotNull(message = "Der Nachname darf nicht leer sein.")
+    private String nachname;
+    
+    @Column(name = "ALTER")
+    @Min(value = 10, message = "Du musst mindestens 10 Jahre alt sein um diese Anwendung zu nutzen.")
+    @Max(value = 130, message = "Bitte gib dein richtiges Alter ein.")
+    @NotNull(message = "Das Alter darf nicht leer sein.")
+    private int alter;
     
     public class Password {
         @Size(min = 6, max = 64, message = "Das Passwort muss zwischen sechs und 64 Zeichen lang sein.")
@@ -72,10 +90,13 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String password, String vorname, String nachname, int alter) {
         this.username = username;
         this.password.password = password;
         this.passwordHash = this.hashPassword(password);
+        this.vorname = vorname;
+        this.nachname = nachname;
+        this.alter = alter;
     }
     //</editor-fold>
 
@@ -86,6 +107,30 @@ public class User implements Serializable {
 
     public void setUsername(String id) {
         this.username = id;
+    }
+    
+    public String getVorname() {
+        return vorname;
+    }
+    
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+    
+    public String getNachname() {
+        return nachname;
+    }
+    
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
+    
+    public int getAlter() {
+        return alter;
+    }
+    
+    public void setAlter(int alter) {
+        this.alter = alter;
     }
 
     public List<Task> getTasks() {

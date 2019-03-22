@@ -1,4 +1,4 @@
-Beispielanwendung "jTodo"
+Beispielanwendung "myWatchlist"
 =========================
 
 Kurzbeschreibung
@@ -42,4 +42,3 @@ Dieses Projekt ist lizenziert unter
 © 2018 – 2019 Christopher Duerr, Bastian Hartenstein, Nico Schmitt <br/>
 
 E-Mail: [Christopher Duerr](mailto:duerr.christopher@student.dhbw-karlsruhe.de), [Bastian Hartenstein](mailto:hartenstein.bastian@student.dhbw-karlsruhe.de), [Nico Schmitt](mailto:schmitt.nico@student.dhbw-karlsruhe.de) <br/>
-Webseite: https://www.wpvs.de

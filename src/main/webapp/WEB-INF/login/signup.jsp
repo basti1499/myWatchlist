@@ -83,7 +83,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="signup_alter" value="${signup_form.values["signup_alter"][0]}">
+                        <input type="number" min="10" step="1" name="signup_alter" value="${signup_form.values["signup_alter"][0]}">
                     </div>
                     
 

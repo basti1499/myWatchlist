@@ -15,7 +15,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Kategorien bearbeiten
+        Genres bearbeiten
     </jsp:attribute>
 
     <jsp:attribute name="head">
@@ -28,7 +28,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Liste</a>
+            <a href="<c:url value="/app/tasks/list/"/>">Watchlist</a>
         </div>
     </jsp:attribute>
 
@@ -39,11 +39,11 @@
 
             <%-- Feld zum Anlegen einer neuen Kategorie --%>
             <div class="column margin">
-                <label for="j_username">Neue Kategorie:</label>
+                <label for="j_username">Neues Genre:</label>
                 <input type="text" name="name" value="${categories_form.values["name"][0]}">
 
                 <button type="submit" name="action" value="create" class="icon-pencil">
-                    Anlegen
+                    Hinzufügen
                 </button>
             </div>
 
@@ -60,7 +60,7 @@
             <c:choose>
                 <c:when test="${empty categories}">
                     <p>
-                        Es sind noch keine Kategorien vorhanden. 🐏
+                        Es sind noch keine Genres vorhanden. 🐏
                     </p>
                 </c:when>
                 <c:otherwise>

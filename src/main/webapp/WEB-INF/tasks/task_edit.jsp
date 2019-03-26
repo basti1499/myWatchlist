@@ -17,10 +17,10 @@
     <jsp:attribute name="title">
         <c:choose>
             <c:when test="${edit}">
-                Aufgabe bearbeiten
+                Film bearbeiten
             </c:when>
             <c:otherwise>
-                Aufgabe anlegen
+                Film hinzufügen
             </c:otherwise>
         </c:choose>
     </jsp:attribute>
@@ -51,10 +51,10 @@
                     <input type="text" name="task_owner" value="${task_form.values["task_owner"][0]}" readonly="readonly">
                 </div>
 
-                <label for="task_category">Kategorie:</label>
+                <label for="task_category">Genre:</label>
                 <div class="side-by-side">
                     <select name="task_category">
-                        <option value="">Keine Kategorie</option>
+                        <option value="">Kein Genre</option>
 
                         <c:forEach items="${categories}" var="category">
                             <option value="${category.id}" ${task_form.values["task_category"][0] == category.id.toString() ? 'selected' : ''}>
@@ -65,7 +65,7 @@
                 </div>
 
                 <label for="task_due_date">
-                    Fällig am:
+                    Hinzugefügt am:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">

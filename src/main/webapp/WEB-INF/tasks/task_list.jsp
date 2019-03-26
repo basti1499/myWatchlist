@@ -15,7 +15,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Liste der Aufgaben
+        Filme
     </jsp:attribute>
 
     <jsp:attribute name="head">
@@ -28,11 +28,11 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Aufgabe anlegen</a>
+            <a href="<c:url value="/app/tasks/task/new/"/>">Film hinzufügen</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
+            <a href="<c:url value="/app/tasks/categories/"/>">Genres bearbeiten</a>
         </div>
     </jsp:attribute>
 
@@ -42,7 +42,7 @@
             <input type="text" name="search_text" value="${param.search_text}" placeholder="Beschreibung"/>
 
             <select name="search_category">
-                <option value="">Alle Kategorien</option>
+                <option value="">Alle Genres</option>
 
                 <c:forEach items="${categories}" var="category">
                     <option value="${category.id}" ${param.search_category == category.id ? 'selected' : ''}>
@@ -70,7 +70,7 @@
         <c:choose>
             <c:when test="${empty tasks}">
                 <p>
-                    Es wurden keine Aufgaben gefunden. 🐈
+                    Es wurden keine Filme gefunden. 🐈
                 </p>
             </c:when>
             <c:otherwise>
@@ -80,10 +80,10 @@
                     <thead>
                         <tr>
                             <th>Bezeichnung</th>
-                            <th>Kategorie</th>
+                            <th>GEnre</th>
                             <th>Eigentümer</th>
                             <th>Status</th>
-                            <th>Fällig am</th>
+                            <th>Hinzugefügt am</th>
                         </tr>
                     </thead>
                     <c:forEach items="${tasks}" var="task">

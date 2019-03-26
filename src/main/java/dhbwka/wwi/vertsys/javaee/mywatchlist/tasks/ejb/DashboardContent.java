@@ -14,7 +14,7 @@ import dhbwka.wwi.vertsys.javaee.mywatchlist.dashboard.ejb.DashboardContentProvi
 import dhbwka.wwi.vertsys.javaee.mywatchlist.dashboard.ejb.DashboardSection;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.dashboard.ejb.DashboardTile;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.TaskStatus;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.MovieStatus;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -29,7 +29,7 @@ public class DashboardContent implements DashboardContentProvider {
     private CategoryBean categoryBean;
 
     @EJB
-    private TaskBean taskBean;
+    private MovieBean movieBean;
 
     /**
      * Vom Dashboard aufgerufenen Methode, um die anzuzeigenden Rubriken und
@@ -83,7 +83,7 @@ public class DashboardContent implements DashboardContentProvider {
         section.getTiles().add(tile);
 
         // Ja Aufgabenstatus eine weitere Kachel erzeugen
-        for (TaskStatus status : TaskStatus.values()) {
+        for (MovieStatus status : MovieStatus.values()) {
             String cssClass1 = cssClass + " status-" + status.toString().toLowerCase();
             String icon = "";
 
@@ -125,8 +125,8 @@ public class DashboardContent implements DashboardContentProvider {
      * @param icon
      * @return
      */
-    private DashboardTile createTile(Category category, TaskStatus status, String label, String cssClass, String icon) {
-        int amount = taskBean.search(null, category, status).size();
+    private DashboardTile createTile(Category category, MovieStatus status, String label, String cssClass, String icon) {
+        int amount = movieBean.search(null, category, status).size();
         String href = "/app/tasks/list/";
 
         if (category != null) {

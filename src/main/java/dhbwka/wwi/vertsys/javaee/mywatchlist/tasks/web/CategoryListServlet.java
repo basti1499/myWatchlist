@@ -11,10 +11,10 @@ package dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.web;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.web.FormValues;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.ejb.CategoryBean;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.ejb.TaskBean;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.ejb.MovieBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb.ValidationBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Task;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Movie;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -38,7 +38,7 @@ public class CategoryListServlet extends HttpServlet {
     CategoryBean categoryBean;
 
     @EJB
-    TaskBean taskBean;
+    MovieBean movieBean;
 
     @EJB
     ValidationBean validationBean;
@@ -149,12 +149,12 @@ public class CategoryListServlet extends HttpServlet {
             }
 
             // Bei allen betroffenen Aufgaben, den Bezug zur Kategorie aufheben
-            List<Task> tasks = category.getTasks();
+            List<Movie> tasks = category.getTasks();
 
             if (tasks != null) {
-                tasks.forEach((Task task) -> {
+                tasks.forEach((Movie task) -> {
                     task.setCategory(null);
-                    this.taskBean.update(task);
+                    this.movieBean.update(task);
                 });
             }
 

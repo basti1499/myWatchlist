@@ -88,7 +88,7 @@
                 </div>
 
                 <label for="task_short_text">
-                    Bezeichnung:
+                    Titel:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">

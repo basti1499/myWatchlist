@@ -79,8 +79,8 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Bezeichnung</th>
-                            <th>GEnre</th>
+                            <th>Titel</th>
+                            <th>Genre</th>
                             <th>Eigentümer</th>
                             <th>Status</th>
                             <th>Hinzugefügt am</th>

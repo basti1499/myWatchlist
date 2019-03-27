@@ -138,7 +138,7 @@ public class User implements Serializable {
 
     @XmlTransient
     public List<Movie> getTasks() {
-        return tasks;
+        return movies;
     }
 
     public void setMovies(List<Movie> movies) {

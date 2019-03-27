@@ -9,8 +9,8 @@
 package dhbwka.wwi.vertsys.javaee.mywatchlist.api;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Movie;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 

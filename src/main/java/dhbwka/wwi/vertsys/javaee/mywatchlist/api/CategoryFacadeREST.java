@@ -8,7 +8,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.mywatchlist.api;
 
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

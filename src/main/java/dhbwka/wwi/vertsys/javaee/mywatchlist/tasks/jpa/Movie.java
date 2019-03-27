@@ -23,6 +23,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.TableGenerator;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -56,10 +57,16 @@ public class Movie implements Serializable {
     @Size(min = 1, max = 50, message = "Der Name muss zwischen ein und 50 Zeichen lang sein.")
     private String director;
     
+//    Jahr ist nun ein Integer
+//    @Column(length = 50)
+//    @Size(min = 4, max = 4, message = "Gib das Jahr mit yyyy ein")
+//    @NotNull(message = "Das Jahr darf nicht leer sein.")
+//    private String year1;
+    
     @Column(length = 50)
-    @Size(min = 4, max = 4, message = "Gib das Jahr mit yyyy ein")
-    @NotNull(message = "Das Jahr darf nicht leer sein.")
-    private String year1;
+    @Min(value = 1800, message = "Der erste Film wurde schon 1888 veröffentlich :o")
+    @NotNull(message = "Bitte gib ein Erscheinungsjahr ein.")
+    private int year1;
     
     @Lob
     @NotNull
@@ -79,7 +86,7 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Movie(User owner, Category category, String titel, String director, String year1, String longText, Date dueDate, Time dueTime) {
+    public Movie(User owner, Category category, String titel, String director, int year1, String longText, Date dueDate, Time dueTime) {
         this.owner = owner;
         this.category = category;
         this.titel = titel;
@@ -131,11 +138,11 @@ public class Movie implements Serializable {
     public void setDirector (String director){
         this.director = director;
     }
-    public String getYear1() {
+    public int getYear1() {
         return year1;
     }
 
-    public void setYear1(String year1) {
+    public void setYear1(int year1) {
         this.year1 = year1;
     }
     

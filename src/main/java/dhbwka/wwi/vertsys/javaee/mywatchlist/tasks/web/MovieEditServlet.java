@@ -117,7 +117,7 @@ public class MovieEditServlet extends HttpServlet {
         String taskStatus = request.getParameter("task_status");
         String taskTitel = request.getParameter("task_titel");
         String taskDirector = request.getParameter("task_director");
-        String taskYear1 = request.getParameter("task_year1"); 
+        int taskYear1 = Integer.parseInt(request.getParameter("task_year1")); 
         String taskLongText = request.getParameter("task_long_text");
 
         Movie task = this.getRequestedTask(request);
@@ -282,7 +282,7 @@ public class MovieEditServlet extends HttpServlet {
         });
         
         values.put("task_year1", new String[]{
-            task.getYear1()
+            Integer.toString(task.getYear1())
         });
 
         values.put("task_long_text", new String[]{

@@ -58,7 +58,7 @@ public class User implements Serializable {
     @NotNull(message = "Der Nachname darf nicht leer sein.")
     private String nachname;
     
-    @Column(name = "ALTER")
+    @Column(name = "ALTER1")
     @Min(value = 10, message = "Du musst mindestens 10 Jahre alt sein um diese Anwendung zu nutzen.")
     @Max(value = 130, message = "Bitte gib dein richtiges Alter ein.")
     @NotNull(message = "Das Alter darf nicht leer sein.")

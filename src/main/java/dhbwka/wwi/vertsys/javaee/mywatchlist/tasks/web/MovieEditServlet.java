@@ -115,7 +115,8 @@ public class MovieEditServlet extends HttpServlet {
         String taskDueDate = request.getParameter("task_due_date");
         String taskDueTime = request.getParameter("task_due_time");
         String taskStatus = request.getParameter("task_status");
-        String taskShortText = request.getParameter("task_short_text");
+        String taskTitel = request.getParameter("task_titel");
+        String taskDirector = request.getParameter("task_director");
         String taskLongText = request.getParameter("task_long_text");
 
         Movie task = this.getRequestedTask(request);
@@ -149,7 +150,8 @@ public class MovieEditServlet extends HttpServlet {
             errors.add("Der ausgewählte Status ist nicht vorhanden.");
         }
 
-        task.setTitel(taskShortText);
+        task.setTitel(taskTitel);
+        task.setDirector(taskDirector);
         task.setLongText(taskLongText);
 
         this.validationBean.validate(task, errors);
@@ -268,8 +270,12 @@ public class MovieEditServlet extends HttpServlet {
             task.getStatus().toString()
         });
 
-        values.put("task_short_text", new String[]{
+        values.put("task_titel", new String[]{
             task.getTitel()
+        });
+        
+         values.put("task_director", new String[]{
+            task.getDirector()
         });
 
         values.put("task_long_text", new String[]{

@@ -40,16 +40,21 @@ public class Movie implements Serializable {
     private long id;
 
     @ManyToOne
-    @NotNull(message = "Die Aufgabe muss einem Benutzer geordnet werden.")
+    @NotNull(message = "Der Film muss einem Benutzer geordnet werden.")
     private User owner;
 
     @ManyToOne
     private Category category;
 
     @Column(length = 50)
-    @NotNull(message = "Die Bezeichnung darf nicht leer sein.")
-    @Size(min = 1, max = 50, message = "Die Bezeichnung muss zwischen ein und 50 Zeichen lang sein.")
+    @NotNull(message = "Der Titel darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Der Titel muss zwischen ein und 50 Zeichen lang sein.")
     private String titel;
+    
+    @Column(length = 50)
+    @NotNull(message = "Das Feld darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Der Name muss zwischen ein und 50 Zeichen lang sein.")
+    private String director;
 
     @Lob
     @NotNull
@@ -69,10 +74,11 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Movie(User owner, Category category, String titel, String longText, Date dueDate, Time dueTime) {
+    public Movie(User owner, Category category, String titel, String director, String longText, Date dueDate, Time dueTime) {
         this.owner = owner;
         this.category = category;
         this.titel = titel;
+        this.director = director;
         this.longText = longText;
         this.dueDate = dueDate;
         this.dueTime = dueTime;
@@ -111,7 +117,15 @@ public class Movie implements Serializable {
     public void setTitel(String titel) {
         this.titel = titel;
     }
-
+    
+    public String getDirector(){
+        return director;
+    }
+    
+    public void setDirector (String director){
+        this.director = director;
+    }
+  
     public String getLongText() {
         return longText;
     }

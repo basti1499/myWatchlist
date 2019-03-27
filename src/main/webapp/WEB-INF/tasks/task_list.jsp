@@ -80,6 +80,7 @@
                     <thead>
                         <tr>
                             <th>Titel</th>
+                            <th>Regisseur</th>
                             <th>Genre</th>
                             <th>Eigentümer</th>
                             <th>Status</th>
@@ -92,6 +93,9 @@
                                 <a href="<c:url value="/app/tasks/task/${task.id}/"/>">
                                     <c:out value="${task.titel}"/>
                                 </a>
+                            </td>
+                            <td>
+                                <c:out value="${task.director}"/>
                             </td>
                             <td>
                                 <c:out value="${task.category.name}"/>

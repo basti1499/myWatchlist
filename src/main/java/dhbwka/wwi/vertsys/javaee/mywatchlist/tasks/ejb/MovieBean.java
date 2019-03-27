@@ -38,7 +38,7 @@ public class MovieBean extends EntityBean<Movie, Long> {
      * @return Alle Aufgaben des Benutzers
      */
     public List<Movie> findByUsername(String username) {
-        return em.createQuery("SELECT t FROM Task t WHERE t.owner.username = :username ORDER BY t.dueDate, t.dueTime")
+        return em.createQuery("SELECT t FROM Movie t WHERE t.owner.username = :username ORDER BY t.dueDate, t.dueTime")
                  .setParameter("username", username)
                  .getResultList();
     }
@@ -66,11 +66,11 @@ public class MovieBean extends EntityBean<Movie, Long> {
         // ORDER BY dueDate, dueTime
         query.orderBy(cb.asc(from.get("dueDate")), cb.asc(from.get("dueTime")));
         
-        // WHERE t.shortText LIKE :search
+        // WHERE t.titel LIKE :search
         Predicate p = cb.conjunction();
         
         if (search != null && !search.trim().isEmpty()) {
-            p = cb.and(p, cb.like(from.get("shortText"), "%" + search + "%"));
+            p = cb.and(p, cb.like(from.get("titel"), "%" + search + "%"));
             query.where(p);
         }
         

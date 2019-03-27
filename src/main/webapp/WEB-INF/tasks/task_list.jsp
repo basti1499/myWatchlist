@@ -90,7 +90,7 @@
                         <tr>
                             <td>
                                 <a href="<c:url value="/app/tasks/task/${task.id}/"/>">
-                                    <c:out value="${task.shortText}"/>
+                                    <c:out value="${task.titel}"/>
                                 </a>
                             </td>
                             <td>

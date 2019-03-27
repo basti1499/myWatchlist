@@ -149,7 +149,7 @@ public class MovieEditServlet extends HttpServlet {
             errors.add("Der ausgewählte Status ist nicht vorhanden.");
         }
 
-        task.setShortText(taskShortText);
+        task.setTitel(taskShortText);
         task.setLongText(taskLongText);
 
         this.validationBean.validate(task, errors);
@@ -269,7 +269,7 @@ public class MovieEditServlet extends HttpServlet {
         });
 
         values.put("task_short_text", new String[]{
-            task.getShortText()
+            task.getTitel()
         });
 
         values.put("task_long_text", new String[]{

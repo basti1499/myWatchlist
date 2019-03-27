@@ -13,7 +13,7 @@ package dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa;
  * Statuswerte einer Aufgabe.
  */
 public enum MovieStatus {
-    OPEN, IN_PROGRESS, FINISHED, CANCELED, POSTPONED;
+    STARTED, NOT_STARTED, FINISHED;
 
     /**
      * Bezeichnung ermitteln
@@ -22,16 +22,12 @@ public enum MovieStatus {
      */
     public String getLabel() {
         switch (this) {
-            case OPEN:
-                return "Offen";
-            case IN_PROGRESS:
-                return "In Bearbeitung";
+            case STARTED:
+                return "Angefangen";
+            case NOT_STARTED:
+                return "Noch nicht Angefangen";
             case FINISHED:
-                return "Erledigt";
-            case CANCELED:
-                return "Abgebrochen";
-            case POSTPONED:
-                return "Zurückgestellt";
+                return "Fertig angeschaut";
             default:
                 return this.toString();
         }

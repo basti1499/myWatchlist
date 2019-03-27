@@ -73,7 +73,7 @@ public class Movie implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @NotNull
-    private MovieStatus status = MovieStatus.OPEN;
+    private MovieStatus status = MovieStatus.STARTED;
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public Movie() {

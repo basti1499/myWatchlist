@@ -7,13 +7,13 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.web;
+package dhbwka.wwi.vertsys.javaee.mywatchlist.movies.web;
 
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.ejb.CategoryBean;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.ejb.MovieBean;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Movie;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.MovieStatus;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.CategoryBean;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.MovieBean;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.MovieStatus;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet für die tabellarische Auflisten der Aufgaben.
  */
-@WebServlet(urlPatterns = {"/app/tasks/list/"})
+@WebServlet(urlPatterns = {"/app/movies/list/"})
 public class MovieListServlet extends HttpServlet {
 
     @EJB
@@ -69,10 +69,10 @@ public class MovieListServlet extends HttpServlet {
 
         }
 
-        List<Movie> tasks = this.movieBean.search(searchText, category, status);
-        request.setAttribute("tasks", tasks);
+        List<Movie> movies = this.movieBean.search(searchText, category, status);
+        request.setAttribute("movies", movies);
 
         // Anfrage an die JSP weiterleiten
-        request.getRequestDispatcher("/WEB-INF/tasks/task_list.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/movies/movie_list.jsp").forward(request, response);
     }
 }

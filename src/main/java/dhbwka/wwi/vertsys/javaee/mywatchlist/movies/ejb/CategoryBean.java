@@ -7,10 +7,10 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.ejb;
+package dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;

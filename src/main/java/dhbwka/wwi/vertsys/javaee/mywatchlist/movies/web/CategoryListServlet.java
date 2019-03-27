@@ -7,14 +7,14 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.web;
+package dhbwka.wwi.vertsys.javaee.mywatchlist.movies.web;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.web.FormValues;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.ejb.CategoryBean;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.ejb.MovieBean;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.CategoryBean;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.MovieBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb.ValidationBean;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Movie;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -31,7 +31,7 @@ import javax.servlet.http.HttpSession;
  * Formular, mit dem ein neue Kategorie angelegt werden kann, sowie eine Liste,
  * die zum Löschen der Kategorien verwendet werden kann.
  */
-@WebServlet(urlPatterns = {"/app/tasks/categories/"})
+@WebServlet(urlPatterns = {"/app/movies/categories/"})
 public class CategoryListServlet extends HttpServlet {
 
     @EJB
@@ -51,7 +51,7 @@ public class CategoryListServlet extends HttpServlet {
         request.setAttribute("categories", this.categoryBean.findAllSorted());
 
         // Anfrage an dazugerhörige JSP weiterleiten
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/tasks/category_list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/movies/category_list.jsp");
         dispatcher.forward(request, response);
 
         // Alte Formulardaten aus der Session entfernen
@@ -149,12 +149,12 @@ public class CategoryListServlet extends HttpServlet {
             }
 
             // Bei allen betroffenen Aufgaben, den Bezug zur Kategorie aufheben
-            List<Movie> tasks = category.getTasks();
+            List<Movie> movies = category.getMovies();
 
-            if (tasks != null) {
-                tasks.forEach((Movie task) -> {
-                    task.setCategory(null);
-                    this.movieBean.update(task);
+            if (movies != null) {
+                movies.forEach((Movie movie) -> {
+                    movie.setCategory(null);
+                    this.movieBean.update(movie);
                 });
             }
 

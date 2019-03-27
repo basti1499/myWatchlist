@@ -24,15 +24,15 @@
 
     <jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Watchlist</a>
+            <a href="<c:url value="/app/movies/list/"/>">Watchlist</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Film anlegen</a>
+            <a href="<c:url value="/app/movies/movie/new/"/>">Film hinzufügen</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Genres bearbeiten</a>
+            <a href="<c:url value="/app/movies/categories/"/>">Genres bearbeiten</a>
         </div>
     </jsp:attribute>
 

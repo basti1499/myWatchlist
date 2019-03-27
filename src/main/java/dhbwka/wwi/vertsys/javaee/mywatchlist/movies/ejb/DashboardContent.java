@@ -7,14 +7,14 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.ejb;
+package dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.dashboard.ejb.DashboardContentProvider;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.dashboard.ejb.DashboardSection;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.dashboard.ejb.DashboardTile;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.MovieStatus;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.MovieStatus;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -22,7 +22,7 @@ import javax.ejb.Stateless;
 /**
  * EJB zur Definition der Dashboard-Kacheln für Aufgaben.
  */
-@Stateless(name = "tasks")
+@Stateless(name = "movies")
 public class DashboardContent implements DashboardContentProvider {
 
     @EJB
@@ -78,11 +78,11 @@ public class DashboardContent implements DashboardContentProvider {
             cssClass = "overview";
         }
 
-        // Eine Kachel für alle Aufgaben in dieser Rubrik erzeugen
+        // Eine Kachel für alle Filme in dieser Rubrik erzeugen
         DashboardTile tile = this.createTile(category, null, "Alle", cssClass + " status-all", "calendar");
         section.getTiles().add(tile);
 
-        // Ja Aufgabenstatus eine weitere Kachel erzeugen
+        // Ja Filmstatus eine weitere Kachel erzeugen
         for (MovieStatus status : MovieStatus.values()) {
             String cssClass1 = cssClass + " status-" + status.toString().toLowerCase();
             String icon = "";
@@ -121,7 +121,7 @@ public class DashboardContent implements DashboardContentProvider {
      */
     private DashboardTile createTile(Category category, MovieStatus status, String label, String cssClass, String icon) {
         int amount = movieBean.search(null, category, status).size();
-        String href = "/app/tasks/list/";
+        String href = "/app/movies/list/";
 
         if (category != null) {
             href = WebUtils.addQueryParameter(href, "search_category", "" + category.getId());

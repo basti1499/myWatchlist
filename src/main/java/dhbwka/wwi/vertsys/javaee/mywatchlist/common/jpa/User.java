@@ -9,7 +9,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa;
 
-import dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.Movie;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -84,7 +84,7 @@ public class User implements Serializable {
     List<String> groups = new ArrayList<>();
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    List<Movie> tasks = new ArrayList<>();
+    List<Movie> movies = new ArrayList<>();
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public User() {
@@ -133,12 +133,12 @@ public class User implements Serializable {
         this.alter = alter;
     }
 
-    public List<Movie> getTasks() {
-        return tasks;
+    public List<Movie> getMovies() {
+        return movies;
     }
 
-    public void setTasks(List<Movie> tasks) {
-        this.tasks = tasks;
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
     }
     //</editor-fold>
 

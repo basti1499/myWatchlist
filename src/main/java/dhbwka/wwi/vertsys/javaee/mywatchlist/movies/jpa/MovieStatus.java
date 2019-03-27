@@ -7,7 +7,7 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa;
+package dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa;
 
 /**
  * Statuswerte einer Aufgabe.

@@ -19,7 +19,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/task_list.css"/>" />
+        <link rel="stylesheet" href="<c:url value="/css/movie_list.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
@@ -28,11 +28,11 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Film hinzufügen</a>
+            <a href="<c:url value="/app/movies/movie/new/"/>">Film hinzufügen</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Genres bearbeiten</a>
+            <a href="<c:url value="/app/movies/categories/"/>">Genres bearbeiten</a>
         </div>
     </jsp:attribute>
 
@@ -68,7 +68,7 @@
 
         <%-- Gefundene Aufgaben --%>
         <c:choose>
-            <c:when test="${empty tasks}">
+            <c:when test="${empty movies}">
                 <p>
                     Es wurden keine Filme gefunden. 🐈
                 </p>
@@ -88,31 +88,31 @@
                             <th>Hinzugefügt am</th>
                         </tr>
                     </thead>
-                    <c:forEach items="${tasks}" var="task">
+                    <c:forEach items="${movies}" var="movie">
                         <tr>
                             <td>
-                                <a href="<c:url value="/app/tasks/task/${task.id}/"/>">
-                                    <c:out value="${task.titel}"/>
+                                <a href="<c:url value="/app/movies/movie/${movie.id}/"/>">
+                                    <c:out value="${movie.titel}"/>
                                 </a>
                             </td>
                             <td>
-                                <c:out value="${task.director}"/>
+                                <c:out value="${movie.director}"/>
                             </td>
                             <td>
-                                <c:out value="${task.year1}"/>
+                                <c:out value="${movie.year1}"/>
                             </td>
                             <td>
-                                <c:out value="${task.category.name}"/>
+                                <c:out value="${movie.category.name}"/>
                             </td>
                             <td>
-                                <c:out value="${task.owner.username}"/>
+                                <c:out value="${movie.owner.username}"/>
                             </td>
                             <td>
-                                <c:out value="${task.status.label}"/>
+                                <c:out value="${movie.status.label}"/>
                             </td>
                             <td>
-                                <c:out value="${utils.formatDate(task.dueDate)}"/>
-                                <c:out value="${utils.formatTime(task.dueTime)}"/>
+                                <c:out value="${utils.formatDate(movie.dueDate)}"/>
+                                <c:out value="${utils.formatTime(movie.dueTime)}"/>
                             </td>
                         </tr>
                     </c:forEach>

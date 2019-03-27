@@ -7,7 +7,7 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa;
+package dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class Category implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    List<Movie> tasks = new ArrayList<>();
+    List<Movie> movies = new ArrayList<>();
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public Category() {
@@ -70,12 +70,12 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public List<Movie> getTasks() {
-        return tasks;
+    public List<Movie> getMovies() {
+        return movies;
     }
 
-    public void setTasks(List<Movie> tasks) {
-        this.tasks = tasks;
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
     }
     //</editor-fold>
 

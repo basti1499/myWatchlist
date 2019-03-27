@@ -13,7 +13,7 @@ package dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa;
  * Statuswerte einer Aufgabe.
  */
 public enum MovieStatus {
-    STARTED, NOT_STARTED, FINISHED;
+    NOT_STARTED, STARTED, FINISHED;
 
     /**
      * Bezeichnung ermitteln

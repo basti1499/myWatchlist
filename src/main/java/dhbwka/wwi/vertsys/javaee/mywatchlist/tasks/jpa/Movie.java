@@ -55,7 +55,12 @@ public class Movie implements Serializable {
     @NotNull(message = "Das Feld darf nicht leer sein.")
     @Size(min = 1, max = 50, message = "Der Name muss zwischen ein und 50 Zeichen lang sein.")
     private String director;
-
+    
+    @Column(length = 50)
+    @Size(min = 4, max = 4, message = "Gib das Jahr mit yyyy ein")
+    @NotNull(message = "Das Jahr darf nicht leer sein.")
+    private String year1;
+    
     @Lob
     @NotNull
     private String longText;
@@ -74,11 +79,12 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Movie(User owner, Category category, String titel, String director, String longText, Date dueDate, Time dueTime) {
+    public Movie(User owner, Category category, String titel, String director, String year1, String longText, Date dueDate, Time dueTime) {
         this.owner = owner;
         this.category = category;
         this.titel = titel;
         this.director = director;
+        this.year1 = year1;
         this.longText = longText;
         this.dueDate = dueDate;
         this.dueTime = dueTime;
@@ -125,7 +131,14 @@ public class Movie implements Serializable {
     public void setDirector (String director){
         this.director = director;
     }
-  
+    public String getYear1() {
+        return year1;
+    }
+
+    public void setYear1(String year1) {
+        this.year1 = year1;
+    }
+    
     public String getLongText() {
         return longText;
     }

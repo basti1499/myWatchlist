@@ -87,12 +87,12 @@
                     </select>
                 </div>
 
-                <label for="task_short_text">
+                <label for="task_titel">
                     Titel:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="task_short_text" value="${task_form.values["task_titel"][0]}">
+                    <input type="text" name="task_titel" value="${task_form.values["task_titel"][0]}">
                 </div>
                 
                 <label for="task_director">
@@ -101,6 +101,14 @@
                 </label>
                 <div class="side-by-side">
                     <input type="text" name="task_director" value="${task_form.values["task_director"][0]}">
+                </div>
+                
+                <label for="task_director">
+                    Erscheinungsjahr:
+                    <span class="required">*</span>
+                </label>
+                <div class="side-by-side">
+                    <input type="text" name="task_year1" value="${task_form.values["task_year1"][0]}">
                 </div>
 
                 <label for="task_long_text">

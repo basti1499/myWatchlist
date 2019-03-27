@@ -117,6 +117,7 @@ public class MovieEditServlet extends HttpServlet {
         String taskStatus = request.getParameter("task_status");
         String taskTitel = request.getParameter("task_titel");
         String taskDirector = request.getParameter("task_director");
+        String taskYear1 = request.getParameter("task_year1"); 
         String taskLongText = request.getParameter("task_long_text");
 
         Movie task = this.getRequestedTask(request);
@@ -131,7 +132,8 @@ public class MovieEditServlet extends HttpServlet {
 
         Date dueDate = WebUtils.parseDate(taskDueDate);
         Time dueTime = WebUtils.parseTime(taskDueTime);
-
+     
+        
         if (dueDate != null) {
             task.setDueDate(dueDate);
         } else {
@@ -149,9 +151,10 @@ public class MovieEditServlet extends HttpServlet {
         } catch (IllegalArgumentException ex) {
             errors.add("Der ausgewählte Status ist nicht vorhanden.");
         }
-
+        
         task.setTitel(taskTitel);
         task.setDirector(taskDirector);
+        task.setYear1(taskYear1);
         task.setLongText(taskLongText);
 
         this.validationBean.validate(task, errors);
@@ -211,7 +214,7 @@ public class MovieEditServlet extends HttpServlet {
         task.setOwner(this.userBean.getCurrentUser());
         task.setDueDate(new Date(System.currentTimeMillis()));
         task.setDueTime(new Time(System.currentTimeMillis()));
-
+        
         // ID aus der URL herausschneiden
         String taskId = request.getPathInfo();
 
@@ -274,8 +277,12 @@ public class MovieEditServlet extends HttpServlet {
             task.getTitel()
         });
         
-         values.put("task_director", new String[]{
+        values.put("task_director", new String[]{
             task.getDirector()
+        });
+        
+        values.put("task_year1", new String[]{
+            task.getYear1()
         });
 
         values.put("task_long_text", new String[]{

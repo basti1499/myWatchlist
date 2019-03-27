@@ -81,6 +81,7 @@
                         <tr>
                             <th>Titel</th>
                             <th>Regisseur</th>
+                            <th>Erscheinungsjahr</th>
                             <th>Genre</th>
                             <th>Eigentümer</th>
                             <th>Status</th>
@@ -96,6 +97,9 @@
                             </td>
                             <td>
                                 <c:out value="${task.director}"/>
+                            </td>
+                            <td>
+                                <c:out value="${task.year1}"/>
                             </td>
                             <td>
                                 <c:out value="${task.category.name}"/>

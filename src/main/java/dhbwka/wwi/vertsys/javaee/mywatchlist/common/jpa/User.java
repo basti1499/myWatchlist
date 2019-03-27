@@ -31,12 +31,15 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Datenbankklasse für einen Benutzer.
  */
 @Entity
 @Table(name = "MYWATCHLIST_USER")
+@XmlRootElement
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,7 +61,7 @@ public class User implements Serializable {
     @NotNull(message = "Der Nachname darf nicht leer sein.")
     private String nachname;
     
-    @Column(name = "ALTER1")
+    @Column(name = "ALTER0")
     @Min(value = 10, message = "Du musst mindestens 10 Jahre alt sein um diese Anwendung zu nutzen.")
     @Max(value = 130, message = "Bitte gib dein richtiges Alter ein.")
     @NotNull(message = "Das Alter darf nicht leer sein.")
@@ -133,6 +136,7 @@ public class User implements Serializable {
         this.alter = alter;
     }
 
+    @XmlTransient
     public List<Movie> getTasks() {
         return tasks;
     }

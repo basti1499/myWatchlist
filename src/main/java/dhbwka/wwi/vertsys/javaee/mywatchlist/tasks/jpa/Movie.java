@@ -26,11 +26,13 @@ import javax.persistence.TableGenerator;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Eine zu erledigende Aufgabe.
  */
 @Entity
+@XmlRootElement
 public class Movie implements Serializable {
 
     private static final long serialVersionUID = 1L;

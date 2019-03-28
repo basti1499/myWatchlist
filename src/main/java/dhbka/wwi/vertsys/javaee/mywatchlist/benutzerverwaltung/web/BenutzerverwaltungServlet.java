@@ -64,7 +64,7 @@ public class BenutzerverwaltungServlet extends HttpServlet {
         
         request.getRequestDispatcher("/WEB-INF/benutzerverwaltung/benutzerverwaltung.jsp").forward(request, response);
         
-//        session.removeAttribute("moviek_form");
+        session.removeAttribute("user_form");
     }
 
     /**
@@ -134,12 +134,8 @@ public class BenutzerverwaltungServlet extends HttpServlet {
         
         User user = userBean.getCurrentUser();
         
-        if (vorname.trim().isEmpty() || vorname == "") {
-            errors.add("testerror");
-        } else {
-            user.setVorname(vorname);
-        }
         
+        user.setVorname(vorname);        
         user.setNachname(nachname);
         user.setAlter(alter);
         
@@ -151,10 +147,12 @@ public class BenutzerverwaltungServlet extends HttpServlet {
             
             // Weiter zur nächsten Seite
             response.sendRedirect(WebUtils.appUrl(request, "/app/dashboard/"));
+            
         } else {
             // Fehler: Formular erneut anzeigen
-            FormValues formValues = new FormValues();
-            formValues.setValues(request.getParameterMap());
+//            FormValues formValues = new FormValues();
+//            formValues.setValues(request.getParameterMap());
+            FormValues formValues = createUserForm(userBean.getCurrentUser());
             formValues.setErrors(errors);
             
             HttpSession session = request.getSession();

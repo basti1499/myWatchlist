@@ -6,15 +6,18 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbka.wwi.vertsys.javaee.mywatchlist.benutzerverrwaltung.web;
+package dhbka.wwi.vertsys.javaee.mywatchlist.benutzerverwaltung.web;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb.ValidationBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.web.FormValues;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.common.web.WebUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -28,7 +31,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author harte
  */
-@WebServlet(name = "BenutzerverwaltungServlet", urlPatterns = {"/app/benutzerverwaltung"})
+@WebServlet(name = "BenutzerverwaltungServlet", urlPatterns = {"/app/benutzerverwaltung/*"})
 public class BenutzerverwaltungServlet extends HttpServlet {
 
     @EJB
@@ -54,7 +57,10 @@ public class BenutzerverwaltungServlet extends HttpServlet {
         
         User user = userBean.getCurrentUser();
         
-        request.setAttribute("user_form", this.createUserForm(user));
+        if(session.getAttribute("user_form") == null){
+            request.setAttribute("user_form", this.createUserForm(user));
+        }
+       
         
         request.getRequestDispatcher("/WEB-INF/benutzerverwaltung/benutzerverwaltung.jsp").forward(request, response);
         
@@ -73,6 +79,9 @@ public class BenutzerverwaltungServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String action = request.getParameter("action");
+        
+        this.saveUser(request, response);
     }
 
     /**
@@ -107,6 +116,52 @@ public class BenutzerverwaltungServlet extends HttpServlet {
         FormValues formValues = new FormValues();
         formValues.setValues(values);
         return formValues;
+    }
+    
+    private void saveUser(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        List<String> errors = new ArrayList<>();
+        
+        String vorname = request.getParameter("vorname");
+        String nachname = request.getParameter("nachname");
+        int alter = 0;
+        try {
+            alter = Integer.parseInt(request.getParameter("alter"));
+        } catch (Exception e) {
+            errors.add("Das Alter darf nicht leer sein!");
+        }
+        
+        
+        User user = userBean.getCurrentUser();
+        
+        if (vorname.trim().isEmpty() || vorname == "") {
+            errors.add("testerror");
+        } else {
+            user.setVorname(vorname);
+        }
+        
+        user.setNachname(nachname);
+        user.setAlter(alter);
+        
+        this.validationBean.validate(user, errors);
+        
+        if (errors.isEmpty()) {
+            // Datensatz speichern
+            this.userBean.update(user);
+            
+            // Weiter zur nächsten Seite
+            response.sendRedirect(WebUtils.appUrl(request, "/app/dashboard/"));
+        } else {
+            // Fehler: Formular erneut anzeigen
+            FormValues formValues = new FormValues();
+            formValues.setValues(request.getParameterMap());
+            formValues.setErrors(errors);
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("user_form", formValues);
+            
+            response.sendRedirect(request.getRequestURI());
+        }
     }
 
 }

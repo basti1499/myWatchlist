@@ -73,7 +73,7 @@ public class MovieEditServlet extends HttpServlet {
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/movies/movie_edit.jsp").forward(request, response);
         
-        session.removeAttribute("moviek_form");
+        session.removeAttribute("movie_form");
     }
 
     @Override
@@ -158,6 +158,7 @@ public class MovieEditServlet extends HttpServlet {
         movie.setLongText(movieLongText);
 
         this.validationBean.validate(movie, errors);
+        this.validationBean.validateOwner(movie, errors);
 
         // Datensatz speichern
         if (errors.isEmpty()) {
@@ -192,12 +193,29 @@ public class MovieEditServlet extends HttpServlet {
     private void deleteMovie(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Datensatz löschen
+        // Datensatz holen
         Movie movie = this.getRequestedMovie(request);
-        this.movieBean.delete(movie);
+        
+        List<String> errors = new ArrayList<>();
+        
+        this.validationBean.validateOwner(movie, errors);
+        
+        if (errors.isEmpty()) {
+            // Datensatz löschen
+            this.movieBean.delete(movie);
+            // Zurück zur Übersicht
+            response.sendRedirect(WebUtils.appUrl(request, "/app/movies/list/"));
+        } else {
+            // Fehler: Formuler erneut anzeigen
+            FormValues formValues = new FormValues();
+            formValues.setValues(request.getParameterMap());
+            formValues.setErrors(errors);
 
-        // Zurück zur Übersicht
-        response.sendRedirect(WebUtils.appUrl(request, "/app/movies/list/"));
+            HttpSession session = request.getSession();
+            session.setAttribute("movie_form", formValues);
+
+            response.sendRedirect(request.getRequestURI());
+        }
     }
 
     /**

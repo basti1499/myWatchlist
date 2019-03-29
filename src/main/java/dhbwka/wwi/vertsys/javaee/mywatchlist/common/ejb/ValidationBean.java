@@ -9,10 +9,13 @@
  */
 package dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb;
 
+import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
@@ -28,6 +31,9 @@ public class ValidationBean {
     
     @Resource
     Validator validator;
+    
+    @EJB
+    UserBean userBean;
     
     /**
      * Wertet die "Bean Validation" Annotationen des übergebenen Objekts aus
@@ -58,6 +64,15 @@ public class ValidationBean {
         violations.forEach((ConstraintViolation<T> violation) -> {
             messages.add(violation.getMessage());
         });
+        
+        return messages;
+    }
+    
+    public List<String> validateOwner(Movie movie, List<String> messages) {
+        
+        if (userBean.getCurrentUser().getUsername() != movie.getOwner().getUsername()) {
+            messages.add("Du darfst nur deine eigenen Movies bearbeiten.");
+        }
         
         return messages;
     }

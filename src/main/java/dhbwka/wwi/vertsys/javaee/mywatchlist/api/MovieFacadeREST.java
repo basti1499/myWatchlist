@@ -8,8 +8,11 @@
  */
 package dhbwka.wwi.vertsys.javaee.mywatchlist.api;
 
+import dhbwka.wwi.vertsys.javaee.mywatchlist.api.data.MovieDTO;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.api.data.MovieFacade;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,6 +37,9 @@ public class MovieFacadeREST extends AbstractFacade<Movie> {
 
     @PersistenceContext(unitName = "default")
     private EntityManager em;
+    
+    @EJB
+    MovieFacade movieFacade;
 
     public MovieFacadeREST() {
         super(Movie.class);
@@ -67,8 +73,14 @@ public class MovieFacadeREST extends AbstractFacade<Movie> {
     }
 
     @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<MovieDTO> findAllDTO() {
+        return movieFacade.getAll();
+    }
+    
+    @GET
     @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_XML})
     public List<Movie> findAll() {
         return super.findAll();
     }

@@ -8,8 +8,11 @@
  */
 package dhbwka.wwi.vertsys.javaee.mywatchlist.api;
 
+import dhbwka.wwi.vertsys.javaee.mywatchlist.api.data.UserDTO;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.api.data.UserFacade;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,6 +37,9 @@ public class UserFacadeREST extends AbstractFacade<User> {
 
     @PersistenceContext(unitName = "default")
     private EntityManager em;
+    
+    @EJB
+    UserFacade userFacade;
 
     public UserFacadeREST() {
         super(User.class);
@@ -61,14 +67,28 @@ public class UserFacadeREST extends AbstractFacade<User> {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_XML})
     public User find(@PathParam("id") String id) {
         return super.find(id);
     }
+    
+    @GET
+    @Path("{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public UserDTO findDTO(@PathParam("id") String id) {
+        return userFacade.get(id);
+    }
 
+    
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<UserDTO> findAllDTO() {
+        return userFacade.getAll();
+    }
+    
     @GET
     @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_XML})
     public List<User> findAll() {
         return super.findAll();
     }

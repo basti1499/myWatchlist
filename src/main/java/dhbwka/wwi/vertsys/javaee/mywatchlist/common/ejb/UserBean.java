@@ -10,6 +10,7 @@
 package dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJBContext;
@@ -109,5 +110,18 @@ public class UserBean {
             super(message);
         }
     }
-
+    
+    /*
+    *   Methode zum finden aller
+    *   Nutzer
+    */
+    public List<User> findAll() {
+//        String select = "SELECT e FROM $E e".replace("$E", this.entityClass.getName());
+//        return em.createQuery(select).getResultList();
+        return em.createQuery("SELECT e FROM User e").getResultList();
+    }
+    
+    public User find(String id) {
+        return em.find(User.class, id);
+    }
 }

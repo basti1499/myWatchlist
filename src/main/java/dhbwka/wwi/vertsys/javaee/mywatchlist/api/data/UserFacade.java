@@ -47,7 +47,10 @@ public class UserFacade {
     
     public UserDTO get(String id) {
         User user = userBean.find(id);
-        return new UserDTO(user.getUsername(), user.getVorname(), user.getNachname(), user.getAlter());
+        if (user != null) {
+            return new UserDTO(user.getUsername(), user.getVorname(), user.getNachname(), user.getAlter());
+        }
+        return null;
     }
     
 }

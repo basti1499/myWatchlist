@@ -53,4 +53,27 @@ public class MovieFacade {
         
     }
     
+    public List<MovieDTO> get(String search) {
+        
+        List<Movie> movies = movieBean.findByTitle(search);
+        
+        return movies.stream().map((movie) -> {
+            MovieDTO movieDTO = new MovieDTO();
+            movieDTO.setId(movie.getId());
+            movieDTO.setTitel(movie.getTitel());
+            movieDTO.setOwner(new UserDTO(movie.getOwner().getUsername(),
+                    movie.getOwner().getVorname(),
+                    movie.getOwner().getNachname(),
+                    movie.getOwner().getAlter()));
+            movieDTO.setDirector(movie.getDirector());
+            movieDTO.setYear1(movie.getYear1());
+            movieDTO.setCategory(movie.getCategory());
+            movieDTO.setDueDate(movie.getDueDate().toString());
+            movieDTO.setDueTime(movie.getDueTime().toString());
+            movieDTO.setStatus(movie.getStatus());
+            
+            return movieDTO;
+        }).collect(Collectors.toList());
+    }
+    
 }

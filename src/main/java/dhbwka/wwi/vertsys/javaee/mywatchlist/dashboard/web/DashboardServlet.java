@@ -39,6 +39,7 @@ public class DashboardServlet extends HttpServlet {
         List<DashboardSection> sections = new ArrayList<>();
         request.setAttribute("sections", sections);
         
+        
         movieContent.createDashboardContent(sections);
 
         // Anfrage an die JSP weiterleiten

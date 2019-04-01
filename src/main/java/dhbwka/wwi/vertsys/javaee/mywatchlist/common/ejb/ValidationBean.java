@@ -70,7 +70,7 @@ public class ValidationBean {
     
     public List<String> validateOwner(Movie movie, List<String> messages) {
         
-        if (userBean.getCurrentUser().getUsername() != movie.getOwner().getUsername()) {
+        if (!userBean.getCurrentUser().getUsername().equals(movie.getOwner().getUsername())) {
             messages.add("Du darfst nur deine eigenen Movies bearbeiten.");
         }
         

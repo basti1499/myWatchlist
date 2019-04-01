@@ -67,9 +67,16 @@ public class MovieFacadeREST extends AbstractFacade<Movie> {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_XML})
     public Movie find(@PathParam("id") Long id) {
         return super.find(id);
+    }
+    
+    @GET
+    @Path("search/{title}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<MovieDTO> findDTO(@PathParam("title") String title) {
+        return movieFacade.get(title);
     }
 
     @GET

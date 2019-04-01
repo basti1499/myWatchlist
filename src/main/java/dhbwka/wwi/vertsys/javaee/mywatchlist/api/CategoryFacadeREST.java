@@ -67,9 +67,16 @@ public class CategoryFacadeREST extends AbstractFacade<Category> {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_XML})
     public Category find(@PathParam("id") Long id) {
         return super.find(id);
+    }
+    
+    @GET
+    @Path("{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public CategoryDTO findDTO(@PathParam("id") Long id) {
+        return categoryFacade.get(id);
     }
 
     @GET

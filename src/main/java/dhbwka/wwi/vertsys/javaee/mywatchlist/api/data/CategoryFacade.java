@@ -31,9 +31,9 @@ public class CategoryFacade {
     
     public List<CategoryDTO> getAll() {
         
-        List<Category> users = categoryBean.findAll();
+        List<Category> categories = categoryBean.findAll();
         
-        return users.stream().map((category) -> {
+        return categories.stream().map((category) -> {
             
             CategoryDTO categoryDTO = new CategoryDTO();
             categoryDTO.setId(category.getId());
@@ -42,6 +42,14 @@ public class CategoryFacade {
             return categoryDTO;
             
         }).collect(Collectors.toList());
+        
+    }
+    
+    public CategoryDTO get(Long id) {
+        
+        Category category = categoryBean.findById(id);
+        
+        return new CategoryDTO(category.getId(), category.getName());
         
     }
     

@@ -25,10 +25,10 @@ html {
     background-color: rgb(250, 250, 250);
     color: rgb(83, 91, 94);
 
-    background-image: url(../img/background-new.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),url(../img/film.jpeg);
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    background-position: bottom right;
+    background-size: initial;
     background-attachment: fixed;
 
     box-sizing: border-box;
@@ -46,7 +46,8 @@ body {
 }
 
 header {
-    background: white;
+    /*background: white;*/
+    background: rgb(32, 32, 32);
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     margin-bottom: 1rem;
     position: sticky;
@@ -58,7 +59,8 @@ header, main {
 
 /* Titelzeile */
 #titlebar {
-    color: rgb(145, 204, 229);
+    /*color: rgb(145, 204, 229);*/
+    color: rgba(255, 255, 255, 0.5);
     font-size: 260%;
     margin-bottom: 1rem;
 }
@@ -74,7 +76,9 @@ header, main {
 }
 
 #titlebar .appname {
-    color: rgb(83, 149, 176);
+    /*color: rgb(83, 149, 176);*/
+    color: white;
+    font-weight: bold;
 }
 
 /* Menüzeile */
@@ -86,10 +90,11 @@ header, main {
 
 /* Farben für Links */
 a, a:visited {
-    color: rgb(193, 33, 33);
+    color: rgba(255, 255, 255, 0.5);
     text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
 }

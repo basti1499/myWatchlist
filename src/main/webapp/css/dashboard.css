@@ -12,8 +12,9 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 .tile {
     position: relative;
 
-    border: 1px solid lightgrey;
-    box-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
+    /*border: 1px solid lightgrey;*/
+    border: 1px solid rgba(255, 255, 255, 1);
+    /*box-shadow: 1px 1px 1px rgba(0,0,0, 0.2);*/
 
     display: inline-block;
     box-sizing: border-box;

@@ -62,7 +62,6 @@
                                     <div class="label">
                                         <c:out value="${tile.label}"/>
                                     </div>
-                                    <div class="icon icon-${tile.icon}"></div>
                                     <div class="amount">
                                         <c:choose>
                                             <c:when test="${tile.showDecimals}">

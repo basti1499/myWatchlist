@@ -31,7 +31,6 @@ import javax.ws.rs.core.MediaType;
  * @author harte
  */
 @Stateless
-//@Path("dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.user")
 @Path("user")
 public class UserFacadeREST extends AbstractFacade<User> {
 
@@ -44,26 +43,6 @@ public class UserFacadeREST extends AbstractFacade<User> {
     public UserFacadeREST() {
         super(User.class);
     }
-
-//    @POST
-//    @Override
-//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void create(User entity) {
-//        super.create(entity);
-//    }
-//
-//    @PUT
-//    @Path("{id}")
-//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void edit(@PathParam("id") String id, User entity) {
-//        super.edit(entity);
-//    }
-//
-//    @DELETE
-//    @Path("{id}")
-//    public void remove(@PathParam("id") String id) {
-//        super.remove(super.find(id));
-//    }
 
     @GET
     @Path("{id}")
@@ -93,16 +72,9 @@ public class UserFacadeREST extends AbstractFacade<User> {
         return super.findAll();
     }
 
-//    @GET
-//    @Path("{from}/{to}")
-//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public List<User> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-//        return super.findRange(new int[]{from, to});
-//    }
-
     @GET
     @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces({MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON})
     public String countREST() {
         return String.valueOf(super.count());
     }

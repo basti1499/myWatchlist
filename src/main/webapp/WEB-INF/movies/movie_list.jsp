@@ -65,7 +65,7 @@
                 </c:forEach>
             </select>
 
-            <button class="icon-search" type="submit">
+            <button class="" type="submit">
                 Suchen
             </button>
         </form>
@@ -80,7 +80,7 @@
             <c:otherwise>
                 <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.mywatchlist.common.web.WebUtils"/>
                 
-                <table>
+                <table class="movieList">
                     <thead>
                         <tr>
                             <th>Titel</th>

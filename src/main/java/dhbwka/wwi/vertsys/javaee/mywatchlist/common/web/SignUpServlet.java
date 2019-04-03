@@ -59,7 +59,12 @@ public class SignUpServlet extends HttpServlet {
         String password2 = request.getParameter("signup_password2");
         String vorname = request.getParameter("signup_vorname");
         String nachname = request.getParameter("signup_nachname");
-        int alter = Integer.parseInt(request.getParameter("signup_alter"));
+        int alter = 0;
+        try {
+            alter = Integer.parseInt(request.getParameter("signup_alter"));
+        } catch (Exception e) {
+            alter = 0;
+        }
         
         // Eingaben prüfen
         User user = new User(username, password1, vorname, nachname, alter);

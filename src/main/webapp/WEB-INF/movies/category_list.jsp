@@ -42,7 +42,7 @@
                 <label for="j_username">Neues Genre:</label>
                 <input type="text" name="name" value="${categories_form.values["name"][0]}">
 
-                <button type="submit" name="action" value="create" class="icon-pencil">
+                <button type="submit" name="action" value="create" class="">
                     Hinzufügen
                 </button>
             </div>
@@ -75,7 +75,7 @@
                             </c:forEach>
                         </div>
 
-                        <button type="submit" name="action" value="delete" class="icon-trash">
+                        <button type="submit" name="action" value="delete" class="">
                             Markierte löschen
                         </button>
                     </div>

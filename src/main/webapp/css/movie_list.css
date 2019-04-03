@@ -18,3 +18,17 @@ td, th {
     text-align: left;
     vertical-align: baseline;
 }
+
+.movieList th {
+    color: white;
+    font-weight: bold;
+}
+
+.movieList td {
+    color: rgba(200, 200, 200, 1);
+}
+
+.movieList td a {
+    color: white;
+    text-decoration: none;
+}

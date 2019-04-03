@@ -98,7 +98,7 @@ public class MovieBean extends EntityBean<Movie, Long> {
      */
     public List<Movie> findByTitle(String title) {
         return em.createQuery("SELECT t FROM Movie t WHERE t.titel LIKE :title")
-                .setParameter("title", title + "%")
+                .setParameter("title", "%" + title + "%")
                 .getResultList();
     }
 }

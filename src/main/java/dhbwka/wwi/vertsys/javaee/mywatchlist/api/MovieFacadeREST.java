@@ -24,6 +24,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -45,26 +46,6 @@ public class MovieFacadeREST extends AbstractFacade<Movie> {
         super(Movie.class);
     }
 
-//    @POST
-//    @Override
-//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void create(Movie entity) {
-//        super.create(entity);
-//    }
-//
-//    @PUT
-//    @Path("{id}")
-//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void edit(@PathParam("id") Long id, Movie entity) {
-//        super.edit(entity);
-//    }
-//
-//    @DELETE
-//    @Path("{id}")
-//    public void remove(@PathParam("id") Long id) {
-//        super.remove(super.find(id));
-//    }
-
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML})
@@ -73,10 +54,10 @@ public class MovieFacadeREST extends AbstractFacade<Movie> {
     }
     
     @GET
-    @Path("search/{title}")
+    @Path("search")
     @Produces({MediaType.APPLICATION_JSON})
-    public List<MovieDTO> findDTO(@PathParam("title") String title) {
-        return movieFacade.get(title);
+    public List<MovieDTO> findDTO(@QueryParam("search") String search) {
+        return movieFacade.get(search);
     }
 
     @GET

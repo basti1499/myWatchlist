@@ -9,8 +9,8 @@
 package dhbwka.wwi.vertsys.javaee.mywatchlist.api.data;
 
 /**
- *
- * @author harte
+ * Vereinfachte Userklasse zur Verarbeitung mit JSON
+ * 
  */
 public class UserDTO {
     

@@ -9,6 +9,10 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 */
 
 /* Allgemeines Layout */
+main > h2 {
+    color: rgba(255, 255, 255, 0.8);
+}
+
 .tile {
     position: relative;
 
@@ -78,15 +82,18 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 
 /* Besondere Kacheln */
 .tile.overview .content {
-    background-color: #FFFCEB;
+    /*background-color: #FFFCEB;*/
+    background-color: rgba(255, 255, 255, 0.95);
 }
 
 .tile.overview .content:hover {
-    background-color: #FBF6D5;
+    /*background-color: #FBF6D5;*/
+    background-color: rgba(230, 230, 230, 1);
 }
 
 .tile.status-all .content {
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
+    background-color: rgba(200, 200, 200, 1);
     font-weight: bold;
 }
 

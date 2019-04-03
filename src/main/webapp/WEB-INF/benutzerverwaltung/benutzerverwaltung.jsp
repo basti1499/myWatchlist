@@ -44,29 +44,29 @@
                 <input type="hidden" name="csrf_token" value="${csrf_token}">
 
                 <%-- Eingabefelder --%>
-                <label for="username">Username</label>
+                <label for="username">Username<span class="required">*</span></label>
                 <div class="side-by-side">
                     <input type="text" name="username" value="${user_form.values["username"][0]}" readonly="readonly">
                 </div>
 
-                <label for="vorname">Vorname</label>
+                <label for="vorname">Vorname<span class="required">*</span></label>
                 <div class="side-by-side">
                     <input type="text" name="vorname" value="${user_form.values["vorname"][0]}">
                 </div>
                 
-                <label for="nachname">Nachname</label>
+                <label for="nachname">Nachname<span class="required">*</span></label>
                 <div class="side-by-side">
                     <input type="text" name="nachname" value="${user_form.values["nachname"][0]}">
                 </div>
                 
-                <label for="alter">Alter</label>
+                <label for="alter">Alter<span class="required">*</span></label>
                 <div class="side-by-side">
                     <input type="text" name="alter" value="${user_form.values["alter"][0]}">
                 </div>
 
                 <%-- Button zum Abschicken --%>
                 <div class="side-by-side">
-                    <button class="icon-pencil" type="submit" name="action" value="save">
+                    <button class="" type="submit" name="action" value="save">
                         Sichern
                     </button>
                 </div>

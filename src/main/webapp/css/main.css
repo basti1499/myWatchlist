@@ -98,3 +98,8 @@ a:hover {
     color: rgba(255, 255, 255, 0.8);
     font-weight: bold;
 }
+
+/* Farbe für Label anpassen */
+label {
+    color: rgba(255, 255, 255, 1);
+}

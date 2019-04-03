@@ -26,10 +26,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-/**
- *
- * @author harte
- */
+
 @Stateless
 @Path("user")
 public class UserFacadeREST extends AbstractFacade<User> {

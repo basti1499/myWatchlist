@@ -11,10 +11,7 @@ package dhbwka.wwi.vertsys.javaee.mywatchlist.api;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-/**
- *
- * @author harte
- */
+
 public abstract class AbstractFacade<T> {
 
     private Class<T> entityClass;

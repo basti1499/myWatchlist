@@ -14,10 +14,7 @@ import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.MovieStatus;
 import java.sql.Date;
 import java.sql.Time;
 
-/**
- *
- * @author harte
- */
+
 public class MovieDTO {
     
     private long id;

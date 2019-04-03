@@ -27,10 +27,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-/**
- *
- * @author harte
- */
+
 @Stateless
 //@Path("dhbwka.wwi.vertsys.javaee.mywatchlist.tasks.jpa.movie")
 @Path("movie")

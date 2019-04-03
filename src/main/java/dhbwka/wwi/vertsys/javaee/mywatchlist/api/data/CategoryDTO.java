@@ -10,10 +10,7 @@ package dhbwka.wwi.vertsys.javaee.mywatchlist.api.data;
 
 import java.util.List;
 
-/**
- *
- * @author harte
- */
+
 public class CategoryDTO {
     
     private long id;

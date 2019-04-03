@@ -16,10 +16,7 @@ import java.util.stream.Collectors;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-/**
- *
- * @author harte
- */
+
 @Stateless
 public class CategoryFacade {
     

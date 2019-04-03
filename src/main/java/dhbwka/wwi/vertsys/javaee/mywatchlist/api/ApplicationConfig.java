@@ -14,10 +14,7 @@ import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
-/**
- *
- * @author harte
- */
+
 @javax.ws.rs.ApplicationPath("api")
 public class ApplicationConfig extends Application {
 

@@ -12,6 +12,7 @@ import dhbwka.wwi.vertsys.javaee.mywatchlist.api.data.CategoryDTO;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.api.data.CategoryFacade;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -69,6 +70,7 @@ public class CategoryFacadeREST extends AbstractFacade<Category> {
         return super.find(id);
     }
     
+    @RolesAllowed("app-user")
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})

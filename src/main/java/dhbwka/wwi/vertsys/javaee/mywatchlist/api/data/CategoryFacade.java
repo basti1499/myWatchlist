@@ -46,8 +46,10 @@ public class CategoryFacade {
         
         Category category = categoryBean.findById(id);
         
-        return new CategoryDTO(category.getId(), category.getName());
-        
+        if (category != null) {
+            return new CategoryDTO(category.getId(), category.getName());
+        }
+        return null;
     }
     
 }

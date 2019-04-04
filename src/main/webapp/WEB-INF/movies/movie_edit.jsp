@@ -69,8 +69,8 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="movie_due_date" value="${movie_form.values["movie_due_date"][0]}">
-                    <input type="text" name="movie_due_time" value="${movie_form.values["movie_due_time"][0]}">
+                    <input type="text" name="movie_due_date" value="${movie_form.values["movie_due_date"][0]}" readonly="true">
+                    <input type="text" name="movie_due_time" value="${movie_form.values["movie_due_time"][0]}" readonly="true">
                 </div>
 
                 <label for="movie_status">

@@ -116,9 +116,16 @@ public class MovieEditServlet extends HttpServlet {
         String movieDueTime = request.getParameter("movie_due_time");
         String movieStatus = request.getParameter("movie_status");
         String movieTitel = request.getParameter("movie_titel");
-        String movieDirector = request.getParameter("movie_director");
-        int movieYear1 = Integer.parseInt(request.getParameter("movie_year1")); 
+        String movieDirector = request.getParameter("movie_director"); 
         String movieLongText = request.getParameter("movie_long_text");
+        int movieYear1 = 0;
+        try {
+            
+            movieYear1 = Integer.parseInt(request.getParameter("movie_year1"));
+        
+        } catch (Exception e) {
+            movieYear1 = 0;
+        }
 
         Movie movie = this.getRequestedMovie(request);
 

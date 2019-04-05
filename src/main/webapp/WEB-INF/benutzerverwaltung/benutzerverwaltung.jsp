@@ -33,7 +33,7 @@
         </div>
         
         <div class="menuitem">
-            <a href="<c:url value="/app/movies/list/"/>">Liste</a>
+            <a href="<c:url value="/app/movies/list/"/>">Watchlist</a>
         </div>
     </jsp:attribute>
 

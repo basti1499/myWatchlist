@@ -57,12 +57,6 @@ public class Movie implements Serializable {
     @Size(min = 1, max = 50, message = "Der Name muss zwischen ein und 50 Zeichen lang sein.")
     private String director;
     
-//    Jahr ist nun ein Integer
-//    @Column(length = 50)
-//    @Size(min = 4, max = 4, message = "Gib das Jahr mit yyyy ein")
-//    @NotNull(message = "Das Jahr darf nicht leer sein.")
-//    private String year1;
-    
     @Column(length = 50)
     @Min(value = 1800, message = "Der erste Film wurde schon 1888 veröffentlich :o")
     @NotNull(message = "Bitte gib ein Erscheinungsjahr ein.")

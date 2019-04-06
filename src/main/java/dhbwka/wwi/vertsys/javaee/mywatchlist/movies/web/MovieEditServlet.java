@@ -50,6 +50,14 @@ public class MovieEditServlet extends HttpServlet {
     @EJB
     ValidationBean validationBean;
 
+    /**
+     * Reagiert auf GET-Anfragen, befüllt die Form mit den Filmdaten, falls
+     * vorhanden, und leitet den Nutzer an die gewünschte Seite weiter.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -76,6 +84,14 @@ public class MovieEditServlet extends HttpServlet {
         session.removeAttribute("movie_form");
     }
 
+    /**
+     * Reagiert auf POST-Anfragen, verarbeitet die Nutzereingaben, validiert diese
+     * und, falls korrekt, fügt sie in die Datenbank ein.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

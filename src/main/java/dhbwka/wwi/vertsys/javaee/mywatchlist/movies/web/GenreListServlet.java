@@ -43,6 +43,14 @@ public class GenreListServlet extends HttpServlet {
     @EJB
     ValidationBean validationBean;
 
+    /**
+     * Reagiert auf GET-Anfragen, befüllt die JSP und leitet den Nutzer
+     * an die gewünschte Seite weiter.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -59,6 +67,14 @@ public class GenreListServlet extends HttpServlet {
         session.removeAttribute("genres_form");
     }
 
+    /**
+     * Reagiert auf POST-Anfragen, validiert Nutzereingaben und fügt diese,
+     * falls korrekt, in die Datenbank ein.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -114,21 +114,29 @@ public class UserBean {
         }
     }
     
-    /*
-    *   Methode zum finden aller
-    *   Nutzer
-    */
+    /**
+     * Methode zum finden aller User
+     * @return Liste aller registrierten User
+     */
     public List<User> findAll() {
-//        String select = "SELECT e FROM $E e".replace("$E", this.entityClass.getName());
-//        return em.createQuery(select).getResultList();
         return em.createQuery("SELECT e FROM User e").getResultList();
     }
     
+    /**
+     * Methode zum finden eines Users
+     * @param id ID des gesuchten Users
+     * @return User mit der ID
+     */
     public User find(String id) {
         return em.find(User.class, id);
     }
     
-    // Von Martin definierte Methode für den Filter
+    /**
+     * Vom Dozenten vorgegebener Filter.
+     * #DankeMartin :)
+     * @param userName
+     * @return 
+     */
     public User findByUsername(String userName){
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         CriteriaQuery<User> query = cb.createQuery(User.class);

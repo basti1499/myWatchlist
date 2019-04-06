@@ -91,10 +91,8 @@ public class MovieBean extends EntityBean<Movie, Long> {
     
     /**
      * Suche nach Filmen anhand des Titels.
-     * 
-     * SELECT Anfrage wird mit Platzhaltern gebaut und dann
-     * gefüllt.
-     * Die Ergebnisse werden als Liste zurückgegeben.
+     * @param title Titel nach dem gesucht werden soll
+     * @return Liste aller passenden Filme
      */
     public List<Movie> findByTitle(String title) {
         return em.createQuery("SELECT t FROM Movie t WHERE t.titel LIKE :title")

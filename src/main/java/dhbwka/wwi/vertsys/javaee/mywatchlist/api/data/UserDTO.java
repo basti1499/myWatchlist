@@ -61,7 +61,4 @@ public class UserDTO {
     public void setAlter(int alter) {
         this.alter = alter;
     }
-    
-    
-    
 }

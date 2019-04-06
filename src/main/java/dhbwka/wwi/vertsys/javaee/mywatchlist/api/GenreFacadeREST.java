@@ -42,7 +42,7 @@ public class GenreFacadeREST extends AbstractFacade<Genre> {
     /**
      * Reagiert auf GET-Anfragen an /api/genre/{id}.
      * @param id ID des gesuchten Genres
-     * @return 
+     * @return Genre mit der ID
      */
     @RolesAllowed("app-user")
     @GET
@@ -52,17 +52,15 @@ public class GenreFacadeREST extends AbstractFacade<Genre> {
         return genreFacade.get(id);
     }
 
+    /**
+     * Reagiert auf GET-Anfragen an /api/genre.
+     * @return Liste aller Genres
+     */
+    @RolesAllowed("app-user")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public List<GenreDTO> findAllDTO() {
         return genreFacade.getAll();
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
     }
 
     @Override

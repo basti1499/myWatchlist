@@ -8,7 +8,6 @@
  */
 package dhbwka.wwi.vertsys.javaee.mywatchlist.api.data;
 
-import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.GenreBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Genre;
 import java.util.List;
@@ -26,6 +25,10 @@ public class GenreFacade {
     @EJB
     MovieFacade movieFacade;
     
+    /**
+     * Methode zum finden aller Genres.
+     * @return Liste aller Genres
+     */
     public List<GenreDTO> getAll() {
         
         List<Genre> genres = genreBean.findAll();
@@ -42,6 +45,11 @@ public class GenreFacade {
         
     }
     
+    /**
+     * Methode zum finden von einem Genre mit der ID.
+     * @param id ID des gesuchten Genres
+     * @return Genre mit der ID
+     */
     public GenreDTO get(Long id) {
         
         Genre genre = genreBean.findById(id);

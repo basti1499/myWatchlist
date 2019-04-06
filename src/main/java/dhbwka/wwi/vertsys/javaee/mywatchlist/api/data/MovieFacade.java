@@ -10,9 +10,7 @@ package dhbwka.wwi.vertsys.javaee.mywatchlist.api.data;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.MovieBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -24,6 +22,10 @@ public class MovieFacade {
     @EJB
     private MovieBean movieBean;
     
+    /**
+     * Methode zum finden aller Filme.
+     * @return Liste aller Filme
+     */
     public List<MovieDTO> getAll() {
         
         List<Movie> movies = movieBean.findAll();
@@ -39,7 +41,7 @@ public class MovieFacade {
                     movie.getOwner().getAlter()));
             movieDTO.setDirector(movie.getDirector());
             movieDTO.setYear1(movie.getYear1());
-            movieDTO.setGenre(movie.getGenre());
+            movieDTO.setGenre(new GenreDTO(movie.getGenre().getId(), movie.getGenre().getName()));
             movieDTO.setDueDate(movie.getDueDate().toString());
             movieDTO.setDueTime(movie.getDueTime().toString());
             movieDTO.setStatus(movie.getStatus());
@@ -50,6 +52,11 @@ public class MovieFacade {
         
     }
     
+    /**
+     * Methode zum Suchen nach Filmen anhand des Titels.
+     * @param search Titel
+     * @return Liste aller Filme deren Titel passt
+     */
     public List<MovieDTO> get(String search) {
         
         List<Movie> movies = movieBean.findByTitle(search);
@@ -64,7 +71,7 @@ public class MovieFacade {
                     movie.getOwner().getAlter()));
             movieDTO.setDirector(movie.getDirector());
             movieDTO.setYear1(movie.getYear1());
-            movieDTO.setGenre(movie.getGenre());
+            movieDTO.setGenre(new GenreDTO(movie.getGenre().getId(), movie.getGenre().getName()));
             movieDTO.setDueDate(movie.getDueDate().toString());
             movieDTO.setDueTime(movie.getDueTime().toString());
             movieDTO.setStatus(movie.getStatus());

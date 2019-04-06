@@ -12,13 +12,13 @@ import dhbwka.wwi.vertsys.javaee.mywatchlist.api.data.MovieDTO;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.api.data.MovieFacade;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -44,6 +44,7 @@ public class MovieFacadeREST extends AbstractFacade<Movie> {
      * @param search Parameter für die Suche nach Filmen
      * @return Liste aller Filme die auf die Suche passen
      */
+    @RolesAllowed("app-user")
     @GET
     @Path("search")
     @Produces({MediaType.APPLICATION_JSON})
@@ -55,22 +56,11 @@ public class MovieFacadeREST extends AbstractFacade<Movie> {
      * Reagiert auf GET-Anfragen auf /api/movie.
      * @return Liste aller Filme
      */
+    @RolesAllowed("app-user")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public List<MovieDTO> findAllDTO() {
         return movieFacade.getAll();
-    }
-
-    /**
-     * Reagiert auf GET-Anfragen an /api/movie/count, gibt die
-     * Anzahl der Filme insgesamt zurück.
-     * @return 
-     */
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
     }
 
     @Override

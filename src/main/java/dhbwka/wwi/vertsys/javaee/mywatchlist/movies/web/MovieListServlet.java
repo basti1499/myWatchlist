@@ -35,6 +35,14 @@ public class MovieListServlet extends HttpServlet {
     @EJB
     private MovieBean movieBean;
 
+    /**
+     * Reagiert auf GET-Anfragen, befüllt das JSP und leitet den Nutzer
+     * zur gesuchten Seite weiter.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

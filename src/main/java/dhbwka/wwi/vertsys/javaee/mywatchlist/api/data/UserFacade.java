@@ -10,8 +10,6 @@ package dhbwka.wwi.vertsys.javaee.mywatchlist.api.data;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.MovieBean;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.ejb.EJB;
@@ -24,6 +22,10 @@ public class UserFacade {
     @EJB
     private UserBean userBean;
     
+    /**
+     * Methode zum finden aller Nutzer.
+     * @return Liste aller registrierter Nutzer
+     */
     public List<UserDTO> getAll() {
         
         List<User> users = userBean.findAll();
@@ -42,6 +44,11 @@ public class UserFacade {
         
     }
     
+    /**
+     * Methode zum finden eines Nutzers anhand seiner ID
+     * @param id ID des gesuchten Nutzer
+     * @return Nutzer mit der ID
+     */
     public UserDTO get(String id) {
         User user = userBean.find(id);
         if (user != null) {
@@ -52,5 +59,4 @@ public class UserFacade {
         }
         return null;
     }
-    
 }

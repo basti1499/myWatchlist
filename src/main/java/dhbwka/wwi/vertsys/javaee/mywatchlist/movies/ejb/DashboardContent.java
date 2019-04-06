@@ -26,7 +26,7 @@ import javax.ejb.Stateless;
 public class DashboardContent implements DashboardContentProvider {
 
     @EJB
-    private GenreBean categoryBean;
+    private GenreBean genreBean;
 
     @EJB
     private MovieBean movieBean;
@@ -46,10 +46,10 @@ public class DashboardContent implements DashboardContentProvider {
         sections.add(section);
 
         // Anschließend je Kategorie einen weiteren Abschnitt erzeugen
-        List<Genre> categories = this.categoryBean.findAllSorted();
+        List<Genre> genres = this.genreBean.findAllSorted();
 
-        for (Genre category : categories) {
-            section = this.createSection(category);
+        for (Genre genre : genres) {
+            section = this.createSection(genre);
             sections.add(section);
         }
     }
@@ -63,23 +63,23 @@ public class DashboardContent implements DashboardContentProvider {
      * Ist die Kategorie null, bedeutet dass, dass eine Rubrik für alle Aufgaben
      * aus allen Kategorien erzeugt werden soll.
      *
-     * @param category Aufgaben-Kategorie, für die Kacheln erzeugt werden sollen
+     * @param genre Aufgaben-Kategorie, für die Kacheln erzeugt werden sollen
      * @return Neue Dashboard-Rubrik mit den Kacheln
      */
-    private DashboardSection createSection(Genre category) {
+    private DashboardSection createSection(Genre genre) {
         // Neue Rubrik im Dashboard erzeugen
         DashboardSection section = new DashboardSection();
         String cssClass = "";
 
-        if (category != null) {
-            section.setLabel(category.getName());
+        if (genre != null) {
+            section.setLabel(genre.getName());
         } else {
             section.setLabel("Alle Genres");
             cssClass = "overview";
         }
 
         // Eine Kachel für alle Filme in dieser Rubrik erzeugen
-        DashboardTile tile = this.createTile(category, null, "Alle", cssClass + " status-all", "calendar");
+        DashboardTile tile = this.createTile(genre, null, "Alle", cssClass + " status-all", "calendar");
         section.getTiles().add(tile);
 
         // Ja Filmstatus eine weitere Kachel erzeugen
@@ -99,7 +99,7 @@ public class DashboardContent implements DashboardContentProvider {
                     break;
             }
 
-            tile = this.createTile(category, status, status.getLabel(), cssClass1, icon);
+            tile = this.createTile(genre, status, status.getLabel(), cssClass1, icon);
             section.getTiles().add(tile);
         }
 
@@ -112,19 +112,19 @@ public class DashboardContent implements DashboardContentProvider {
      * Methode werden auch die in der Kachel angezeigte Anzahl sowie der Link,
      * auf den die Kachel zeigt, ermittelt.
      *
-     * @param category
+     * @param genre
      * @param status
      * @param label
      * @param cssClass
      * @param icon
      * @return
      */
-    private DashboardTile createTile(Genre category, MovieStatus status, String label, String cssClass, String icon) {
-        int amount = movieBean.search(null, category, status).size();
+    private DashboardTile createTile(Genre genre, MovieStatus status, String label, String cssClass, String icon) {
+        int amount = movieBean.search(null, genre, status).size();
         String href = "/app/movies/list/";
 
-        if (category != null) {
-            href = WebUtils.addQueryParameter(href, "search_category", "" + category.getId());
+        if (genre != null) {
+            href = WebUtils.addQueryParameter(href, "search_genre", "" + genre.getId());
         }
 
         if (status != null) {

@@ -9,7 +9,6 @@
  */
 package dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb;
 
-import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +67,13 @@ public class ValidationBean {
         return messages;
     }
     
+    /**
+     * Überprüft ob der aktuell angemeldete Benutzer auch der Besitzer des Filmes ist,
+     * ist er es nicht, darf er diesen nicht bearbeiten.
+     * @param movie Zu bearbeitender Film
+     * @param messages Bisherige Fehlermessages
+     * @return Bisherige + Neue Fehlermessages
+     */
     public List<String> validateOwner(Movie movie, List<String> messages) {
         
         if (!userBean.getCurrentUser().getUsername().equals(movie.getOwner().getUsername())) {

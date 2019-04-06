@@ -31,6 +31,14 @@ public class DashboardServlet extends HttpServlet {
     @EJB(beanName = "movies")
     DashboardContentProvider movieContent;
 
+    /**
+     * Reagiert auf GET-Anfragen, zeigt das Dashboard an und befüllt es
+     * mit den entsprechenden Sections.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

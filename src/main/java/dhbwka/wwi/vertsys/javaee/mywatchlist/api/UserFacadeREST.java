@@ -12,6 +12,7 @@ import dhbwka.wwi.vertsys.javaee.mywatchlist.api.data.UserDTO;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.api.data.UserFacade;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -43,6 +44,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
      * @param id ID des Nutzers
      * @return Einzelnes UserDTO-Objekt im JSON Format
      */
+    @RolesAllowed("app-user")
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
@@ -54,22 +56,11 @@ public class UserFacadeREST extends AbstractFacade<User> {
      * Reagiert auf GET-Anfragen an /api/user, gibt eine Liste aller Nutzer zurück.
      * @return Liste aller Nutzer
      */
+    @RolesAllowed("app-user")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public List<UserDTO> findAllDTO() {
         return userFacade.getAll();
-    }
-
-    /**
-     * Reagiert auf GET-Anfragen an /api/user/count, gibt die
-     * Anzahl der insgesamt registrierten Nutzer zurück.
-     * @return 
-     */
-    @GET
-    @Path("count")
-    @Produces({MediaType.APPLICATION_JSON})
-    public String countREST() {
-        return String.valueOf(super.count());
     }
 
     @Override

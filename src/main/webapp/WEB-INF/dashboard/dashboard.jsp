@@ -32,7 +32,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/movies/categories/"/>">Genres bearbeiten</a>
+            <a href="<c:url value="/app/movies/genres/"/>">Genres bearbeiten</a>
         </div>
         
         <div class="menuitem">

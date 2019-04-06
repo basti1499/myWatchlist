@@ -13,7 +13,7 @@ import dhbwka.wwi.vertsys.javaee.mywatchlist.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.dashboard.ejb.DashboardContentProvider;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.dashboard.ejb.DashboardSection;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.dashboard.ejb.DashboardTile;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Genre;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.MovieStatus;
 import java.util.List;
 import javax.ejb.EJB;
@@ -26,7 +26,7 @@ import javax.ejb.Stateless;
 public class DashboardContent implements DashboardContentProvider {
 
     @EJB
-    private CategoryBean categoryBean;
+    private GenreBean categoryBean;
 
     @EJB
     private MovieBean movieBean;
@@ -46,9 +46,9 @@ public class DashboardContent implements DashboardContentProvider {
         sections.add(section);
 
         // Anschließend je Kategorie einen weiteren Abschnitt erzeugen
-        List<Category> categories = this.categoryBean.findAllSorted();
+        List<Genre> categories = this.categoryBean.findAllSorted();
 
-        for (Category category : categories) {
+        for (Genre category : categories) {
             section = this.createSection(category);
             sections.add(section);
         }
@@ -66,7 +66,7 @@ public class DashboardContent implements DashboardContentProvider {
      * @param category Aufgaben-Kategorie, für die Kacheln erzeugt werden sollen
      * @return Neue Dashboard-Rubrik mit den Kacheln
      */
-    private DashboardSection createSection(Category category) {
+    private DashboardSection createSection(Genre category) {
         // Neue Rubrik im Dashboard erzeugen
         DashboardSection section = new DashboardSection();
         String cssClass = "";
@@ -119,7 +119,7 @@ public class DashboardContent implements DashboardContentProvider {
      * @param icon
      * @return
      */
-    private DashboardTile createTile(Category category, MovieStatus status, String label, String cssClass, String icon) {
+    private DashboardTile createTile(Genre category, MovieStatus status, String label, String cssClass, String icon) {
         int amount = movieBean.search(null, category, status).size();
         String href = "/app/movies/list/";
 

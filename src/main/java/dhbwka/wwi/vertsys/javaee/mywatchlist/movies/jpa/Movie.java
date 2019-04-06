@@ -45,7 +45,7 @@ public class Movie implements Serializable {
     private User owner;
 
     @ManyToOne
-    private Category category;
+    private Genre genre;
 
     @Column(length = 50)
     @NotNull(message = "Der Titel darf nicht leer sein.")
@@ -86,9 +86,9 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Movie(User owner, Category category, String titel, String director, int year1, String longText, Date dueDate, Time dueTime) {
+    public Movie(User owner, Genre genre, String titel, String director, int year1, String longText, Date dueDate, Time dueTime) {
         this.owner = owner;
-        this.category = category;
+        this.genre = genre;
         this.titel = titel;
         this.director = director;
         this.year1 = year1;
@@ -115,12 +115,12 @@ public class Movie implements Serializable {
         this.owner = owner;
     }
 
-    public Category getCategory() {
-        return category;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     public String getTitel() {

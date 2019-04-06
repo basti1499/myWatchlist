@@ -9,7 +9,7 @@
 package dhbwka.wwi.vertsys.javaee.mywatchlist.api.data;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Genre;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.MovieStatus;
 import java.sql.Date;
 import java.sql.Time;
@@ -19,7 +19,7 @@ public class MovieDTO {
     
     private long id;
     private UserDTO Owner;
-    private Category category;
+    private Genre genre;
     private String titel;
     private String director;
     private int year1;
@@ -45,12 +45,12 @@ public class MovieDTO {
         this.Owner = Owner;
     }
 
-    public Category getCategory() {
-        return category;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     public String getTitel() {

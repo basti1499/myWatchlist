@@ -9,9 +9,9 @@
  */
 package dhbwka.wwi.vertsys.javaee.mywatchlist.movies.web;
 
-import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.CategoryBean;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.GenreBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.MovieBean;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Genre;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.MovieStatus;
 import java.io.IOException;
@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MovieListServlet extends HttpServlet {
 
     @EJB
-    private CategoryBean categoryBean;
+    private GenreBean genreBean;
     
     @EJB
     private MovieBean movieBean;
@@ -40,23 +40,23 @@ public class MovieListServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
-        request.setAttribute("categories", this.categoryBean.findAllSorted());
+        request.setAttribute("genres", this.genreBean.findAllSorted());
         request.setAttribute("statuses", MovieStatus.values());
 
         // Suchparameter aus der URL auslesen
         String searchText = request.getParameter("search_text");
-        String searchCategory = request.getParameter("search_category");
+        String searchGenre = request.getParameter("search_genre");
         String searchStatus = request.getParameter("search_status");
 
         // Anzuzeigende Aufgaben suchen
-        Category category = null;
+        Genre genre = null;
         MovieStatus status = null;
 
-        if (searchCategory != null) {
+        if (searchGenre != null) {
             try {
-                category = this.categoryBean.findById(Long.parseLong(searchCategory));
+                genre = this.genreBean.findById(Long.parseLong(searchGenre));
             } catch (NumberFormatException ex) {
-                category = null;
+                genre = null;
             }
         }
 
@@ -69,7 +69,7 @@ public class MovieListServlet extends HttpServlet {
 
         }
 
-        List<Movie> movies = this.movieBean.search(searchText, category, status);
+        List<Movie> movies = this.movieBean.search(searchText, genre, status);
         request.setAttribute("movies", movies);
 
         // Anfrage an die JSP weiterleiten

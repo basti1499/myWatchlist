@@ -51,14 +51,14 @@
                     <input type="text" name="movie_owner" value="${movie_form.values["movie_owner"][0]}" readonly="readonly">
                 </div>
 
-                <label for="movie_category">Genre:</label>
+                <label for="movie_genre">Genre:</label>
                 <div class="side-by-side">
-                    <select name="movie_category">
+                    <select name="movie_genre">
                         <option value="">Kein Genre</option>
 
-                        <c:forEach items="${categories}" var="category">
-                            <option value="${category.id}" ${movie_form.values["movie_category"][0] == category.id.toString() ? 'selected' : ''}>
-                                <c:out value="${category.name}" />
+                        <c:forEach items="${genres}" var="genre">
+                            <option value="${genre.id}" ${movie_form.values["movie_genre"][0] == genre.id.toString() ? 'selected' : ''}>
+                                <c:out value="${genre.name}" />
                             </option>
                         </c:forEach>
                     </select>

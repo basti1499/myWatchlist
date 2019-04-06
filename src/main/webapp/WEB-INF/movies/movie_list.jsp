@@ -32,7 +32,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/movies/categories/"/>">Genres bearbeiten</a>
+            <a href="<c:url value="/app/movies/genres/"/>">Genres bearbeiten</a>
         </div>
         
         <div class="menuitem">
@@ -45,12 +45,12 @@
         <form method="GET" class="horizontal" id="search">
             <input type="text" name="search_text" value="${param.search_text}" placeholder="Beschreibung"/>
 
-            <select name="search_category">
+            <select name="search_genre">
                 <option value="">Alle Genres</option>
 
-                <c:forEach items="${categories}" var="category">
-                    <option value="${category.id}" ${param.search_category == category.id ? 'selected' : ''}>
-                        <c:out value="${category.name}" />
+                <c:forEach items="${genres}" var="genre">
+                    <option value="${genre.id}" ${param.search_genre == genre.id ? 'selected' : ''}>
+                        <c:out value="${genre.name}" />
                     </option>
                 </c:forEach>
             </select>
@@ -106,7 +106,7 @@
                                 <c:out value="${movie.year1}"/>
                             </td>
                             <td>
-                                <c:out value="${movie.category.name}"/>
+                                <c:out value="${movie.genre.name}"/>
                             </td>
                             <td>
                                 <c:out value="${movie.owner.username}"/>

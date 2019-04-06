@@ -39,7 +39,7 @@ public class MovieFacade {
                     movie.getOwner().getAlter()));
             movieDTO.setDirector(movie.getDirector());
             movieDTO.setYear1(movie.getYear1());
-            movieDTO.setCategory(movie.getCategory());
+            movieDTO.setGenre(movie.getGenre());
             movieDTO.setDueDate(movie.getDueDate().toString());
             movieDTO.setDueTime(movie.getDueTime().toString());
             movieDTO.setStatus(movie.getStatus());
@@ -64,7 +64,7 @@ public class MovieFacade {
                     movie.getOwner().getAlter()));
             movieDTO.setDirector(movie.getDirector());
             movieDTO.setYear1(movie.getYear1());
-            movieDTO.setCategory(movie.getCategory());
+            movieDTO.setGenre(movie.getGenre());
             movieDTO.setDueDate(movie.getDueDate().toString());
             movieDTO.setDueTime(movie.getDueTime().toString());
             movieDTO.setStatus(movie.getStatus());

@@ -9,7 +9,7 @@
 package dhbwka.wwi.vertsys.javaee.mywatchlist.api;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Genre;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -32,7 +32,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(dhbwka.wwi.vertsys.javaee.mywatchlist.api.CategoryFacadeREST.class);
+        resources.add(dhbwka.wwi.vertsys.javaee.mywatchlist.api.GenreFacadeREST.class);
         resources.add(dhbwka.wwi.vertsys.javaee.mywatchlist.api.MovieFacadeREST.class);
         resources.add(dhbwka.wwi.vertsys.javaee.mywatchlist.api.UserFacadeREST.class);
     }

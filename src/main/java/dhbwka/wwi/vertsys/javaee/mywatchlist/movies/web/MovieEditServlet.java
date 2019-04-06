@@ -11,7 +11,7 @@ package dhbwka.wwi.vertsys.javaee.mywatchlist.movies.web;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.web.FormValues;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.CategoryBean;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.GenreBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb.MovieBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb.ValidationBean;
@@ -42,7 +42,7 @@ public class MovieEditServlet extends HttpServlet {
     MovieBean movieBean;
 
     @EJB
-    CategoryBean categoryBean;
+    GenreBean genreBean;
 
     @EJB
     UserBean userBean;
@@ -55,7 +55,7 @@ public class MovieEditServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
-        request.setAttribute("categories", this.categoryBean.findAllSorted());
+        request.setAttribute("genres", this.genreBean.findAllSorted());
         request.setAttribute("statuses", MovieStatus.values());
 
         // Zu bearbeitende Aufgabe einlesen
@@ -111,7 +111,7 @@ public class MovieEditServlet extends HttpServlet {
         // Formulareingaben prüfen
         List<String> errors = new ArrayList<>();
 
-        String movieCategory = request.getParameter("movie_category");
+        String movieGenre = request.getParameter("movie_genre");
         String movieDueDate = request.getParameter("movie_due_date");
         String movieDueTime = request.getParameter("movie_due_time");
         String movieStatus = request.getParameter("movie_status");
@@ -129,9 +129,9 @@ public class MovieEditServlet extends HttpServlet {
 
         Movie movie = this.getRequestedMovie(request);
 
-        if (movieCategory != null && !movieCategory.trim().isEmpty()) {
+        if (movieGenre != null && !movieGenre.trim().isEmpty()) {
             try {
-                movie.setCategory(this.categoryBean.findById(Long.parseLong(movieCategory)));
+                movie.setGenre(this.genreBean.findById(Long.parseLong(movieGenre)));
             } catch (NumberFormatException ex) {
                 // Ungültige oder keine ID mitgegeben
             }
@@ -280,9 +280,9 @@ public class MovieEditServlet extends HttpServlet {
             movie.getOwner().getUsername()
         });
 
-        if (movie.getCategory() != null) {
-            values.put("movie_category", new String[]{
-                "" + movie.getCategory().getId()
+        if (movie.getGenre() != null) {
+            values.put("movie_genre", new String[]{
+                "" + movie.getGenre().getId()
             });
         }
 

@@ -10,7 +10,7 @@
 package dhbwka.wwi.vertsys.javaee.mywatchlist.movies.ejb;
 
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Genre;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.Movie;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.movies.jpa.MovieStatus;
 import java.util.List;
@@ -50,11 +50,11 @@ public class MovieBean extends EntityBean<Movie, Long> {
      * mit der CriteriaBuilder-API vollkommen dynamisch erzeugt.
      * 
      * @param search In der Kurzbeschreibung enthaltener Text (optional)
-     * @param category Kategorie (optional)
+     * @param genre Kategorie (optional)
      * @param status Status (optional)
      * @return Liste mit den gefundenen Aufgaben
      */
-    public List<Movie> search(String search, Category category, MovieStatus status) {
+    public List<Movie> search(String search, Genre genre, MovieStatus status) {
         // Hilfsobjekt zum Bauen des Query
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         
@@ -74,9 +74,9 @@ public class MovieBean extends EntityBean<Movie, Long> {
             query.where(p);
         }
         
-        // WHERE t.category = :category
-        if (category != null) {
-            p = cb.and(p, cb.equal(from.get("category"), category));
+        // WHERE t.genre = :genre
+        if (genre != null) {
+            p = cb.and(p, cb.equal(from.get("genre"), genre));
             query.where(p);
         }
         

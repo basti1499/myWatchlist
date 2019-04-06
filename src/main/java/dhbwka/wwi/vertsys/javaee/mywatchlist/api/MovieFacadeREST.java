@@ -16,11 +16,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -42,14 +38,12 @@ public class MovieFacadeREST extends AbstractFacade<Movie> {
     public MovieFacadeREST() {
         super(Movie.class);
     }
-
-    @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML})
-    public Movie find(@PathParam("id") Long id) {
-        return super.find(id);
-    }
     
+    /**
+     * Reagiert auf GET-Anfragen auf /api/movie/search.
+     * @param search Parameter für die Suche nach Filmen
+     * @return Liste aller Filme die auf die Suche passen
+     */
     @GET
     @Path("search")
     @Produces({MediaType.APPLICATION_JSON})
@@ -57,26 +51,21 @@ public class MovieFacadeREST extends AbstractFacade<Movie> {
         return movieFacade.get(search);
     }
 
+    /**
+     * Reagiert auf GET-Anfragen auf /api/movie.
+     * @return Liste aller Filme
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public List<MovieDTO> findAllDTO() {
         return movieFacade.getAll();
     }
-    
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML})
-    public List<Movie> findAll() {
-        return super.findAll();
-    }
 
-//    @GET
-//    @Path("{from}/{to}")
-//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public List<Movie> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-//        return super.findRange(new int[]{from, to});
-//    }
-
+    /**
+     * Reagiert auf GET-Anfragen an /api/movie/count, gibt die
+     * Anzahl der Filme insgesamt zurück.
+     * @return 
+     */
     @GET
     @Path("count")
     @Produces(MediaType.TEXT_PLAIN)

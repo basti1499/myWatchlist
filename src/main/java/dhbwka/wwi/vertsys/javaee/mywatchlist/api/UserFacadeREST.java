@@ -16,11 +16,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -40,38 +36,38 @@ public class UserFacadeREST extends AbstractFacade<User> {
     public UserFacadeREST() {
         super(User.class);
     }
-
-    @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML})
-    public User find(@PathParam("id") String id) {
-        return super.find(id);
-    }
     
+    /**
+     * Reagiert auf GET-Anfragen mit einer ID im Pfad, dies zeigt einen
+     * bestimmten User an.
+     * @param id ID des Nutzers
+     * @return Einzelnes UserDTO-Objekt im JSON Format
+     */
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public UserDTO findDTO(@PathParam("id") String id) {
         return userFacade.get(id);
     }
-
     
+    /**
+     * Reagiert auf GET-Anfragen an /api/user, gibt eine Liste aller Nutzer zurück.
+     * @return Liste aller Nutzer
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public List<UserDTO> findAllDTO() {
         return userFacade.getAll();
     }
-    
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML})
-    public List<User> findAll() {
-        return super.findAll();
-    }
 
+    /**
+     * Reagiert auf GET-Anfragen an /api/user/count, gibt die
+     * Anzahl der insgesamt registrierten Nutzer zurück.
+     * @return 
+     */
     @GET
     @Path("count")
-    @Produces({MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public String countREST() {
         return String.valueOf(super.count());
     }

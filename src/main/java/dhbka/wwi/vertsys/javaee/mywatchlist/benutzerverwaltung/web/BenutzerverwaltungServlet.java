@@ -14,7 +14,6 @@ import dhbwka.wwi.vertsys.javaee.mywatchlist.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.web.FormValues;
 import dhbwka.wwi.vertsys.javaee.mywatchlist.common.web.WebUtils;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +39,8 @@ public class BenutzerverwaltungServlet extends HttpServlet {
     
     /**
      * Handles the HTTP <code>GET</code> method.
+     * Befüllt die Form mit den Nutzerdaten des aktuell
+     * eingeloggten Benutzers.
      *
      * @param request servlet request
      * @param response servlet response
@@ -66,6 +67,8 @@ public class BenutzerverwaltungServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
+     * Nimmt die Veränderungen an der Form durch den Nutzer
+     * entgegen und ruft die entsprechenden Methoden auf.
      *
      * @param request servlet request
      * @param response servlet response
@@ -88,9 +91,17 @@ public class BenutzerverwaltungServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet zur Verwaltung der Nutzerdaten";
     }
     
+    /**
+     * Erstelle einer Form mit den aktuellen Daten des Nutzers,
+     * diese werden im dann in den Feldern bereits ausgefüllt damit
+     * er sehen kann was er ändern möchte.
+     * 
+     * @param user Nutzer von dem die Daten bezogen werden
+     * @return Befüllte FormValues
+     */
     private FormValues createUserForm(User user) {
         Map<String, String[]> values = new HashMap<>();
         
@@ -115,6 +126,16 @@ public class BenutzerverwaltungServlet extends HttpServlet {
         return formValues;
     }
     
+    /**
+     * Bezieht die Daten aus der Form, welche der Nutzer
+     * gegebenenfalls bearbeitet hat.
+     * Wenn keine Fehlermeldungen erscheinen, wird der
+     * Datenbankeintrag des Users aktualisiert.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */    
     private void saveUser(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<String> errors = new ArrayList<>();

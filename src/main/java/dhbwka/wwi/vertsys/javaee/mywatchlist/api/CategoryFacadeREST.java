@@ -17,11 +17,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -42,34 +38,12 @@ public class CategoryFacadeREST extends AbstractFacade<Category> {
     public CategoryFacadeREST() {
         super(Category.class);
     }
-
-//    @POST
-//    @Override
-//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void create(Category entity) {
-//        super.create(entity);
-//    }
-//
-//    @PUT
-//    @Path("{id}")
-//    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public void edit(@PathParam("id") Long id, Category entity) {
-//        super.edit(entity);
-//    }
-//
-//    @DELETE
-//    @Path("{id}")
-//    public void remove(@PathParam("id") Long id) {
-//        super.remove(super.find(id));
-//    }
-
-    @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML})
-    public Category find(@PathParam("id") Long id) {
-        return super.find(id);
-    }
     
+    /**
+     * Reagiert auf GET-Anfragen an /api/category/{id}.
+     * @param id ID des gesuchten Genres
+     * @return 
+     */
     @RolesAllowed("app-user")
     @GET
     @Path("{id}")
@@ -83,20 +57,6 @@ public class CategoryFacadeREST extends AbstractFacade<Category> {
     public List<CategoryDTO> findAllDTO() {
         return categoryFacade.getAll();
     }
-    
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML})
-    public List<Category> findAll() {
-        return super.findAll();
-    }
-
-//    @GET
-//    @Path("{from}/{to}")
-//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public List<Category> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-//        return super.findRange(new int[]{from, to});
-//    }
 
     @GET
     @Path("count")

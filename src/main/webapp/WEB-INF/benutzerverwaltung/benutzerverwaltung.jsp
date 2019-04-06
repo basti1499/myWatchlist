@@ -12,14 +12,6 @@
 
 <template:base>
     <jsp:attribute name="title">
-        <%--<c:choose>--%>
-            <%--<c:when test="${edit}">--%>
-                <!--Film bearbeiten-->
-            <%--</c:when>--%>
-            <%--<c:otherwise>--%>
-                <!--Film hinzufügen-->
-            <%--</c:otherwise>--%>
-        <%--</c:choose>--%>
         Eigene Daten bearbeiten
     </jsp:attribute>
 

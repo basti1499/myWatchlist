@@ -39,6 +39,6 @@ Copyright
 Dieses Projekt ist lizenziert unter
 [_Creative Commons Namensnennung 4.0 International_](http://creativecommons.org/licenses/by/4.0/)
 
-© 2018 – 2019 Christopher Duerr, Bastian Hartenstein, Nico Schmitt <br/>
+© 2019 Christopher Duerr, Bastian Hartenstein, Nico Schmitt <br/>
 
 E-Mail: [Christopher Duerr](mailto:duerr.christopher@student.dhbw-karlsruhe.de), [Bastian Hartenstein](mailto:hartenstein.bastian@student.dhbw-karlsruhe.de), [Nico Schmitt](mailto:schmitt.nico@student.dhbw-karlsruhe.de) <br/>
